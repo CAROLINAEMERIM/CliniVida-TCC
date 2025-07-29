@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - CliniVida</title>
+    <link rel="stylesheet" href="../css/style.css"> </head>
+<body class="perfil-page">
+    <header class="cabecalho-secundario">
+        <h1 class="titulo-pagina">Meu Perfil</h1>
+        <a href="../paciente.html" class="fechar-pagina">&times;</a> </header>
+
+    <main class="perfil-container">
+        <nav class="abas-perfil">
+            <a href="#" class="aba-item active">Dados do Usuário</a>
+            </nav>
+
+        <section class="perfil-conteudo">
+            <div class="perfil-avatar-container">
+                <img src="../assets/avatar_gisele.png" alt="Foto de Perfil" class="perfil-avatar">
+                </div>
+
+            <form class="form-perfil">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="login">Login*</label>
+                        <input type="email" id="login" name="login" value="karyna@shosp.com.br" required readonly>
+                    </div>
+                    <div class="form-group-button">
+                        <button type="button" class="btn btn-alterar-senha">Alterar senha</button>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome">Nome*</label>
+                        <input type="text" id="nome" name="nome" value="GISELE" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dataNascimento">Data de Nascimento</label>
+                        <input type="date" id="dataNascimento" name="dataNascimento" value="2019-09-04">
+                        </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" value="(21) 3215-8788">
+                    </div>
+                    <div class="form-group">
+                        <label for="celular">Celular</label>
+                        <input type="tel" id="celular" name="celular" value="(21) 98664-8888">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-salvar">Salvar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // A lógica de preenchimento do nome de usuário não é necessária aqui, pois é uma tela de edição.
+        // Você precisaria de JavaScript para buscar os dados do usuário logado e preencher os campos.
+
+        // Exemplo:
+        // window.onload = function() {
+        //     const pacienteData = JSON.parse(localStorage.getItem('paciente_data')); // Exemplo: armazenar mais dados
+        //     if (pacienteData) {
+        //         document.getElementById('login').value = pacienteData.email || '';
+        //         document.getElementById('nome').value = pacienteData.nome || '';
+        //         // ... preencher outros campos
+        //     }
+        // };
+
+        // Botão de "fechar" no canto superior direito
+        document.querySelector('.fechar-pagina').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.history.back(); // Volta para a página anterior (paciente.html)
+        });
+
+        // Exemplo de como você lidaria com o botão "Alterar senha"
+        document.querySelector('.btn-alterar-senha').addEventListener('click', function() {
+            alert('Funcionalidade de Alterar Senha será implementada.');
+            // Redirecionar para uma página de alteração de senha ou abrir um modal
+            // window.location.href = 'alterar_senha.html';
+        });
+
+        // Exemplo de como você lidaria com o salvamento do formulário
+        document.querySelector('.form-perfil').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Dados do perfil salvos com sucesso!');
+            // Aqui você enviaria os dados do formulário para o backend
+            // const formData = new FormData(e.target);
+            // fetch('/api/salvar-perfil', { method: 'POST', body: formData })
+            //     .then(response => response.json())
+            //     .then(data => console.log(data));
+        });
+    </script>
+</body>
+</html>

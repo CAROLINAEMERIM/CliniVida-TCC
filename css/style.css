@@ -1,3 +1,9 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 /* ===================== GLOBAIS ===================== */
 body {
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
@@ -28,7 +34,7 @@ body {
   border-bottom: 1px solid #fff;
 }
 
-.logopv {
+.logo {
   height: 70px;
   margin-right: 32px;
   flex-shrink: 0;
@@ -65,12 +71,6 @@ body {
   padding-left: 150px;
 }
 
-.cadastre-se {
-  color: #ffffff !important;
-  font-weight: 900;
-  text-decoration: underline;
-}
-
 .cadastre-se a {
   color: #fff !important;
   font-weight: 900;
@@ -92,15 +92,14 @@ body {
 
 /* ===================== TÍTULOS ===================== */
 h1 {
-  font-size: 80px;
-  font-weight: 700;
-  color: #fff;
-  margin: 100px 20px 10px 100px;
-  text-shadow:
-    -1px -1px 0 #885d9f,
-     1px -1px 0 #885d9f,
-    -1px  1px 0 #885d9f,
-     1px  1px 0 #885d9f;
+  font-size: 100px;
+  font-weight: 900;
+  text-align: center;
+  margin: 0 0 32px 0;
+  letter-spacing: 2px;
+  background: none;
+  color: #885d9f;
+  text-shadow: 0 2px 12px #fff, 0 1px 0 #bba6d6;
 }
 
 h2 {
@@ -110,21 +109,21 @@ h2 {
   font-weight: 700;
   text-shadow:
     -1px -1px 0 #fff,
-     1px -1px 0 #fff,
-    -1px  1px 0 #fff,
-     1px  1px 0 #fff;
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff;
 }
 
 h3, h4 {
   max-width: 600px;
-  margin-left: 100px;
-  margin-right: 20px;
+  margin: 0 0 24px 0;
   display: block;
   text-align: left;
+  text-align: center;
 }
 
 h3 {
-  text-align: center;
+  margin: 0 0 24px 0;
   margin-bottom: 16px;
   margin-top: 150px;
   font-size: 45px;
@@ -132,9 +131,9 @@ h3 {
   font-weight: 700;
   text-shadow:
     -1px -1px 0 #fff,
-     1px -1px 0 #fff,
-    -1px  1px 0 #fff,
-     1px  1px 0 #fff;
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff;
 }
 
 h4 {
@@ -143,20 +142,6 @@ h4 {
   font-size: 1.1em;
   font-weight: 300;
   color: #000;
-}
-
-h5 {
-  text-align: center;
-  margin-bottom: 0px;
-  margin-top: 150px;
-  font-size: 45px;
-  color: #885d9f;
-  font-weight: 700;
-  text-shadow:
-    -1px -1px 0 #fff,
-     1px -1px 0 #fff,
-    -1px  1px 0 #fff,
-     1px  1px 0 #fff;
 }
 
 h6 {
@@ -178,14 +163,14 @@ h7 {
   font-weight: 700;
   text-shadow:
     -1px -1px 0 #fff,
-     1px -1px 0 #fff,
-    -1px  1px 0 #fff,
-     1px  1px 0 #fff;
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff;
   display: block;
   align-self: center;
 }
 
-h8 {
+h5 {
   text-align: center;
   margin-top: 30px;
   margin-bottom: 16px;
@@ -207,9 +192,7 @@ h8 {
   font-size: 1em;
   border-radius: 999px;
   text-decoration: none;
-  margin-left: 100px;
-  margin-top: 50px;
-  margin-bottom: 100px;
+  margin: 10px auto 100px auto; /* centraliza horizontalmente */
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   transition: background 0.2s;
   border: 3px solid #fff;
@@ -227,7 +210,7 @@ h8 {
   right: 0;
   bottom: 0;
   z-index: -1;
-  background-image: url('../assets/Plano de fundo início.jpg');
+  background-image: url('../assets/Plano de fundo início.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -235,25 +218,37 @@ h8 {
 
 .bloco-com-imagem {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
+  align-items: flex-start; /* Alinha pelo topo */
+  justify-content: center; /* Centraliza o conjunto na tela */
+  gap: 40px;
   width: 100%;
-  margin-top: 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 40px;
 }
 
 .texto-bloco {
+  flex: 1 1 0;
   max-width: 600px;
-  margin-left: 100px;
+  text-align: left;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Alinha o texto ao topo */
 }
 
 .imagem-lado {
-  width: 400px;
+  flex: 1 10;
+  max-width: 400px;
+  width: 100%;
   height: auto;
   border-radius: 16px;
   object-fit: cover;
-  margin-right: 100px;
   border: 2px solid #885d9f;
+  display: block;
+  margin: 0;
+  align-self: flex-start; /* Alinha a imagem ao topo */
 }
 
 .imagens-centrais {
@@ -309,7 +304,7 @@ h8 {
   align-items: center;
   box-shadow: 0 2px 16px rgba(0,0,0,0.08);
   margin-bottom: 40px;
-  min-height: unset;
+  min-height: unset; /* Remove min-height se estiver causando problemas */
   position: relative;
 }
 
@@ -324,7 +319,7 @@ h8 {
 }
 
 .plano-info {
-  border-radius: 0;
+  border-radius: 0; /* Remove border-radius se não for necessário */
   padding: 14px 10px;
   margin-bottom: 16px;
   width: 100%;
@@ -332,12 +327,12 @@ h8 {
   font-size: 1.1em;
   font-weight: 400;
   color: #fff;
-  background: none;
+  background: none; /* Garante que o background seja transparente */
   box-sizing: border-box;
-  border: none;
+  border: none; /* Remove bordas se não forem necessárias */
 }
 
-.botao-saiba-mais {
+.botao-saiba-mais1, .botao-saiba-mais2, .botao-saiba-mais3, .botao-saiba-mais4, .botao-saiba-mais5, .botao-saiba-mais6, .botao-saiba-mais7, .botao-saiba-mais8 {
   display: inline-block;
   padding: 10px 30px;
   background: transparent;
@@ -351,7 +346,7 @@ h8 {
   transition: background 0.2s, color 0.2s;
 }
 
-.botao-saiba-mais:hover {
+.botao-saiba-mais1:hover, .botao-saiba-mais2:hover, .botao-saiba-mais3:hover, .botao-saiba-mais4:hover, .botao-saiba-mais5:hover, .botao-saiba-mais6:hover, .botao-saiba-mais7:hover, .botao-saiba-mais8:hover {
   background: #6d4685;
   color: #fff;
 }
@@ -430,7 +425,7 @@ h8 {
 }
 
 .enviar-botao {
-  margin: 16px auto 0 auto;
+  margin: 0px auto 0 auto;
   width: 140px;
   text-align: center;
   display: block;
@@ -444,6 +439,8 @@ h8 {
   align-items: flex-start;
   margin-bottom: 32px;
   margin-left: 100px;
+  margin-top: -50px;
+  padding-top: 0;
 }
 
 .contato-textos {
@@ -480,270 +477,1277 @@ h8 {
 
 .container-contato-tabela {
   display: flex;
-  align-items: center;
-  gap: 200px;
+  align-items: flex-start;
+  gap: 250px;
   margin-left: 100px;
-  margin-top: 150px;
-  margin-bottom: 150px;
+  margin-top: 15px;
+}
+
+/* ===================== MODAIS ===================== */
+.modal-plano {
+  display: none;
+  position: fixed;
+  z-index: 1001; /* Acima do cabeçalho */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-plano.ativo {
+  display: flex;
+}
+
+.modal-conteudo {
+  background-color: #fefefe;
+  margin: auto; /* Centraliza vertical e horizontalmente */
+  padding: 40px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  text-align: center;
+  transform: translateY(-50px);
+  opacity: 0;
+  animation: modal-aparecer 0.3s forwards ease-out;
+  max-height: 80vh; /* Limita a altura para modais maiores */
+  overflow-y: auto; /* Adiciona scroll se o conteúdo for grande */
+  box-sizing: border-box; /* Garante que padding e border estejam incluídos na largura/altura */
+}
+
+@keyframes modal-aparecer {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-fechar {
+  color: #aaa;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.modal-fechar:hover,
+.modal-fechar:focus {
+  color: #885d9f;
+  text-decoration: none;
+}
+
+.modal-conteudo h2 {
+  color: #885d9f;
+  font-size: 2.2em;
+  margin-bottom: 20px;
+  text-shadow: none; /* Remove text-shadow para um visual mais limpo no modal */
+  margin-left: 0; /* Centraliza no modal */
+}
+
+.modal-conteudo p {
+  font-size: 1.1em;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.modal-assinar {
+  display: inline-block;
+  padding: 12px 35px;
+  background: #885d9f;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1em;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  border: none; /* Remove a borda se não for desejada */
+  cursor: pointer;
+}
+
+.modal-assinar:hover {
+  background: #6d4685;
+  transform: translateY(-2px);
+}
+
+/* MODAL DE LOGIN E CADASTRO - Usam a base do modal-plano */
+.modal-login {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-login.ativo {
+  display: flex;
+}
+
+.modal-login-conteudo {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 40px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  text-align: center;
+  transform: translateY(-50px);
+  opacity: 0;
+  animation: modal-aparecer 0.3s forwards ease-out;
+  box-sizing: border-box;
+}
+
+.modal-login-fechar {
+  color: #aaa;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.modal-login-fechar:hover,
+.modal-login-fechar:focus {
+  color: #885d9f;
+  text-decoration: none;
+}
+
+.modal-login-conteudo h2 {
+  color: #885d9f;
+  font-size: 2.2em;
+  margin-bottom: 25px;
+  text-shadow: none;
+  margin-left: 0;
+}
+
+.login-campo {
+  width: calc(100% - 20px);
+  padding: 15px 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1em;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.login-campo:focus {
+  outline: none;
+  border-color: #885d9f;
+}
+
+.login-botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.login-botao {
+  padding: 12px 20px;
+  background: #885d9f;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.login-botao:hover {
+  background: #6d4685;
+}
+
+.login-link {
+  color: #885d9f;
+  text-decoration: none;
+  font-size: 0.95em;
+  margin-top: 10px;
+  transition: color 0.2s;
+}
+
+.login-link:hover {
+  color: #6d4685;
+  text-decoration: underline;
+}
+
+.login-campo-genero {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-size: 1em;
+    color: #555;
+}
+
+.login-campo-genero label {
+    font-weight: 400;
+}
+
+.login-campo-genero input[type="radio"] {
+    margin-right: 5px;
 }
 
 /* ===================== RODAPÉ ===================== */
 .rodape {
-  background: #885d9f;
+  background: #333;
   color: #fff;
-  padding: 40px 0 0 0;
-  margin-top: 0;
-  border-top: 1px solid #fff;
-  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  padding: 40px 0;
+  margin-top: 80px; /* Garante um bom espaçamento do conteúdo acima */
+  box-sizing: border-box; /* Inclui padding no cálculo da largura/altura */
 }
 
-.rodape-conteudo {
+.rodape-container {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-bottom: 20px;
-  gap: 100px;
-  text-align: center;
+  flex-wrap: wrap; /* Permite que as colunas quebrem para a próxima linha em telas menores */
+  justify-content: flex-start; /* Alinha as colunas à esquerda */
+  align-items: flex-start; /* Alinha os itens flex no topo */
+  max-width: 1100px; /* Limita a largura máxima do conteúdo do rodapé */
+  margin: 0 auto; /* Centraliza o container principal */
+  padding: 0 20px; /* Padding nas laterais para telas maiores */
+  gap: 50px; /* Espaçamento entre as colunas */
 }
 
-.rodape-logo img {
-  height: 200px;
-  border-radius: 16px;
-  background: #fff;
-  padding: 6px;
-}
-
-.rodape-logo,
-.rodape-mapa,
+.rodape-navegacao,
 .rodape-contato,
 .rodape-redes {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  flex: 1; /* Permite que os itens cresçam e encolham igualmente */
+  min-width: 180px; /* Largura mínima para cada coluna antes de quebrar */
+  margin-bottom: 30px; /* Espaçamento inferior para quando as colunas quebram */
+  text-align: left; /* Alinha todo o texto dentro da coluna à esquerda */
 }
 
-.rodape-mapa h4,
-.rodape-contato h4,
-.rodape-redes h4 {
+.rodape-navegacao h5,
+.rodape-contato h5,
+.rodape-redes h5 {
+  color: #885d9f; /* Cor dos títulos */
   font-size: 1.2em;
-  margin-bottom: 10px;
-  color: #fff;
-  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: left; /* Garante o alinhamento do título */
 }
 
-.rodape-mapa ul {
+.rodape-navegacao ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.rodape-mapa ul li {
-  margin-bottom: 6px;
+.rodape-navegacao ul li {
+  margin-bottom: 8px; /* Espaçamento entre os itens da lista */
 }
 
-.rodape-mapa ul li a {
+.rodape-navegacao ul li a {
   color: #fff;
   text-decoration: none;
-  font-weight: 400;
   transition: color 0.2s;
+  display: inline-block; /* Essencial para hover e padding se necessário */
 }
 
-.rodape-mapa ul li a:hover {
-  color: #ffd700;
-  text-decoration: underline;
+.rodape-navegacao ul li a:hover {
+  color: #bba6d6;
 }
 
 .rodape-contato p {
-  margin: 4px 0;
-  font-weight: 400;
+  margin-bottom: 10px;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+.rodape-redes {
+  display: flex; /* Transforma em flex container para os ícones */
+  flex-direction: column; /* Empilha os ícones verticalmente */
+  align-items: flex-start; /* Alinha os ícones à esquerda dentro da coluna */
 }
 
 .rodape-redes a {
-  display: inline-block;
-  margin-right: 10px;
+  margin-bottom: 10px; /* Espaçamento entre os ícones */
+  display: inline-block; /* Para garantir que as margens funcionem */
+}
+
+.rodape-redes a:last-child {
+    margin-bottom: 0; /* Remove margem do último ícone */
 }
 
 .rodape-redes img {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: #fff;
-  padding: 4px;
-  transition: background 0.2s;
+  width: 30px;
+  height: 30px;
+  transition: transform 0.2s;
 }
 
 .rodape-redes img:hover {
-  background: #ffd700;
+  transform: scale(1.1);
 }
 
 .rodape-copy {
   text-align: center;
-  padding: 16px 0;
-  background: #7a4e99;
-  color: #fff;
-  font-size: 0.95em;
-  border-top: 1px solid #fff;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #444;
+  font-size: 0.9em;
+  color: #bbb;
 }
 
-/* ===================== LOGIN/CADASTRO ===================== */
-.login-bg {
-  min-height: 100vh;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .rodape-container {
+    flex-direction: column; /* Empilha as colunas verticalmente */
+    align-items: flex-start; /* Alinha todas as colunas empilhadas à esquerda */
+    padding: 0 30px; /* Ajusta o padding lateral para telas menores */
+    gap: 30px; /* Reduz o espaçamento vertical entre as seções */
+  }
+
+  .rodape-navegacao,
+  .rodape-contato,
+  .rodape-redes {
+    width: 100%; /* Ocupa a largura total disponível */
+    min-width: unset; /* Remove a largura mínima para evitar overflows */
+    margin-bottom: 0; /* Apenas o gap controla o espaçamento vertical */
+  }
+
+  .rodape-navegacao ul {
+    align-items: flex-start; /* Garante que a lista de links mantenha o alinhamento à esquerda */
+  }
 }
 
-.login-tabela {
-  background: #885d9f;
-  border-radius: 24px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
-  padding: 0 32px 32px 32px;
-  width: 340px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
+@media (max-width: 480px) {
+    .rodape-container {
+        padding: 0 15px; /* Reduz o padding para telas muito pequenas */
+    }
 }
 
-.login-titulo {
-  color: #fff;
-  font-size: 2em;
-  font-weight: 900;
-  width: 100%;
-  text-align: center;
-  border-radius: 24px 24px 0 0;
-  margin: 0;
-  margin-bottom: 32px;
-  padding: 18px 0 14px 0;
-  box-shadow: none;
+/* Estilos para o cabeçalho secundário (usado em páginas internas como perfil) */
+.cabecalho-secundario {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #885d9f;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
 }
 
-.login-campo {
-  width: 100%;
-  padding: 14px 10px;
-  border: 2px solid #885d9f;
-  border-radius: 12px;
-  background: #faf6ff;
-  color: #885d9f;
-  font-size: 1.1em;
-  font-weight: 500;
-  margin-bottom: 18px;
-  box-sizing: border-box;
-  outline: none;
-  transition: border 0.2s;
+.titulo-pagina {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 700;
 }
 
-.login-campo::placeholder {
-  color: #bba6d6;
-  opacity: 1;
-  font-weight: 400;
+.fechar-pagina {
+    color: #fff;
+    font-size: 2.5em;
+    text-decoration: none;
+    line-height: 1;
+    transition: color 0.2s;
 }
 
-.login-botao {
-  width: 100%;
-  margin: 0 0 18px 0;
+.fechar-pagina:hover {
+    color: #bba6d6;
 }
 
-.login-links {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 100%;
-  align-items: center;
+/* Estilos para a página de Perfil */
+.perfil-page {
+    padding-top: 90px; /* Espaço para o cabeçalho fixo */
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
-.login-link {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1em;
-  transition: text-decoration 0.2s;
+.perfil-container {
+    max-width: 900px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.login-link:hover {
-  text-decoration: underline;
+.abas-perfil {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 30px;
 }
 
-.login-campo-genero {
-  width: 100%;
-  margin-top: 24px;      /* aumenta o espaço acima */
-  margin-bottom: 18px;
-  color: #fff;
-  font-size: 1em;
-  font-weight: 500;
-  text-align: center;
+.aba-item {
+    padding: 15px 25px;
+    text-decoration: none;
+    color: #885d9f;
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s, color 0.3s;
 }
 
-.genero-opcoes {
-  display: flex;
-  justify-content: center;   /* centraliza as opções */
-  gap: 24px;                 /* espaço entre as opções */
-  margin-top: 8px;
-  margin-bottom: 0;
-  width: 100%;
-  text-align: center;
+.aba-item.active {
+    border-color: #885d9f;
+    color: #6d4685;
 }
 
-/* ===================== SCROLL ANCORAS ===================== */
-#sobre,
-#profissionais,
-#planos {
-  scroll-margin-top: 120px;
+.aba-item:hover {
+    color: #6d4685;
 }
 
-#contato {
-  scroll-margin-top: 200px;
+.perfil-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* ===================== RESPONSIVIDADE ===================== */
-@media (max-width: 600px) {
-  body {
+.perfil-avatar-container {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.perfil-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #885d9f;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-upload-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #885d9f;
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.2s;
+}
+
+.avatar-upload-btn:hover {
+    background: #6d4685;
+}
+
+.form-perfil {
+    width: 100%;
+    max-width: 600px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
+}
+
+.form-group {
+    flex: 1;
+    min-width: 250px; /* Garante que os campos não fiquem muito estreitos */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    text-align: left;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.form-group-button {
+    display: flex;
+    align-items: flex-end; /* Alinha o botão com o campo de texto */
+    flex: 1;
+    min-width: 150px;
+}
+
+.btn-alterar-senha {
+    padding: 12px 20px;
+    background: #f0f0f0;
+    color: #885d9f;
+    border: 1px solid #885d9f;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+    width: 100%; /* Ocupa a largura total do seu flex item */
+}
+
+.btn-alterar-senha:hover {
+    background: #885d9f;
+    color: #fff;
+}
+
+.form-acoes {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-salvar-perfil {
+    padding: 15px 40px;
+    background: #885d9f;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.btn-salvar-perfil:hover {
+    background: #6d4685;
+    transform: translateY(-2px);
+}
+
+/* Estilos para a página de Agendamentos */
+.agenda-page-wrapper {
+    padding-top: 120px; /* Espaço para o cabeçalho fixo */
+    padding-bottom: 50px;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.agenda-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.agenda-step {
+    display: none;
+}
+
+.agenda-step.active {
+    display: block;
+}
+
+.agenda-step h2 {
+    color: #885d9f;
+    font-size: 2em;
+    margin-bottom: 25px;
+    text-align: center;
+    text-shadow: none;
+    margin-left: 0;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header button {
+    background: #885d9f;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.2s;
+}
+
+.calendar-header button:hover {
+    background: #6d4685;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    text-align: center;
+}
+
+.calendar-day-name {
+    font-weight: 700;
+    color: #885d9f;
+}
+
+.calendar-date {
     padding: 10px;
-  }
+    border-radius: 8px;
+    background-color: #eee;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    font-weight: 500;
+    color: #555;
+}
 
-  .cabeçalho {
+.calendar-date:hover:not(.empty):not(.selected):not(.unavailable) {
+    background-color: #e0d9e8;
+    transform: translateY(-2px);
+}
+
+.calendar-date.empty {
+    background-color: transparent;
+    cursor: default;
+}
+
+.calendar-date.unavailable {
+    background-color: #f8d7da;
+    color: #dc3545;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+.calendar-date.selected {
+    background-color: #885d9f;
+    color: #fff;
+    font-weight: 700;
+}
+
+.horarios-disponiveis {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.horarios-disponiveis h3 {
+    font-size: 1.5em;
+    color: #885d9f;
+    margin-bottom: 20px;
+    text-shadow: none;
+    margin-top: 0;
+    margin-left: 0;
+}
+
+.horarios-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.horario-btn {
+    padding: 10px 15px;
+    border: 1px solid #885d9f;
+    border-radius: 8px;
+    background: #fff;
+    color: #885d9f;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    font-size: 1em;
+}
+
+.horario-btn:hover:not(.unavailable):not(.active) {
+    background: #e0d9e8;
+}
+
+.horario-btn.active {
+    background: #885d9f;
+    color: #fff;
+    font-weight: 700;
+}
+
+.horario-btn.unavailable {
+    background: #f8d7da;
+    color: #dc3545;
+    cursor: not-allowed;
+    text-decoration: line-through;
+    border-color: #dc3545;
+}
+
+.agenda-navigation {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.btn-continuar-agenda, .btn-voltar-agenda, .btn-agendar-consulta {
+    padding: 12px 30px;
+    background: #885d9f;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    margin: 0 10px;
+}
+
+.btn-continuar-agenda:hover, .btn-agendar-consulta:hover {
+    background: #6d4685;
+    transform: translateY(-2px);
+}
+
+.btn-voltar-agenda {
+    background: #ccc;
+}
+
+.btn-voltar-agenda:hover {
+    background: #bbb;
+}
+
+/* Estilos para a página de Histórico Clínico */
+.historico-page-wrapper {
+    padding-top: 120px; /* Espaço para o cabeçalho fixo */
+    padding-bottom: 50px;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.historico-header {
+    text-align: center;
+    margin-bottom: 40px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.historico-header h1 {
+    color: #885d9f;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    text-shadow: none;
+}
+
+.historico-header p {
+    color: #555;
+    font-size: 1.1em;
+}
+
+.historico-filtros {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.historico-filtros input[type="date"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    color: #555;
+}
+
+.btn-pesquisar-historico {
+    padding: 10px 25px;
+    background: #885d9f;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-size: 1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-pesquisar-historico:hover {
+    background: #6d4685;
+}
+
+.historico-tabela-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* Permite rolagem horizontal em telas menores */
+}
+
+.historico-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.historico-tabela th,
+.historico-tabela td {
+    border: 1px solid #eee;
+    padding: 12px 15px;
+    text-align: left;
+    color: #555;
+}
+
+.historico-tabela th {
+    background-color: #f8f8f8;
+    color: #885d9f;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.historico-tabela tbody tr:nth-child(even) {
+    background-color: #fbfbfb;
+}
+
+.historico-tabela tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Estilos para a página de Ajuda/FAQ */
+.ajuda-page-wrapper {
+    padding-top: 120px;
+    padding-bottom: 50px;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    box-sizing: border-box;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.ajuda-header {
+    text-align: center;
+    margin-bottom: 40px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.ajuda-header h1 {
+    color: #885d9f;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-shadow: none;
+}
+
+.faq-search-bar {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.1em;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+.faq-search-bar:focus {
+    outline: none;
+    border-color: #885d9f;
+}
+
+.faq-container {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Garante que as bordas do container segurem os itens arredondados */
+}
+
+.faq-item {
+    border-bottom: 1px solid #eee;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-question {
+    background-color: #f8f8f8;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    color: #333;
+    font-size: 1.1em;
+    transition: background-color 0.2s;
+}
+
+.faq-question::after {
+    content: '\25BC'; /* Seta para baixo/v invertido */
+    font-size: 1.5em;
+    color: #885d9f;
+    transition: transform 0.3s;
+}
+
+.faq-item.active .faq-question::after {
+    transform: rotate(180deg); /* Gira a seta quando ativo */
+}
+
+.faq-question:hover {
+    background-color: #e0d9e8; /* Roxo mais claro no hover */
+}
+
+.faq-answer {
+    padding: 0 25px;
+    background-color: #ffffff;
+    max-height: 0; /* Começa escondido */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    color: #555;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+    padding-top: 15px;
+    padding-bottom: 25px;
+}
+
+/* Responsividade para a tela de Ajuda */
+@media (max-width: 768px) {
+    .ajuda-page-wrapper {
+        margin-top: 80px;
+        padding: 20px;
+    }
+
+    .ajuda-header h1 {
+        font-size: 1.8em;
+    }
+}
+
+/* Estilos para a página do Paciente (Home logada) */
+.paciente-page {
+    padding-top: 100px; /* Ajuste para o cabeçalho fixo */
+    background-color: #f4f4f4;
+    min-height: calc(100vh - 80px); /* Altura mínima descontando o rodapé */
+    display: flex;
     flex-direction: column;
-    padding: 10px 5px;
-  }
+}
 
+.main-content {
+    flex-grow: 1; /* Garante que o conteúdo principal ocupe o espaço disponível */
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.welcome-message {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.welcome-message h1 {
+    color: #885d9f;
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    text-shadow: none;
+}
+
+.welcome-message p {
+    color: #555;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.feature-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.feature-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.feature-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    border: 3px solid #885d9f;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card h2 {
+    color: #885d9f;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-shadow: none;
+    margin-left: 0;
+}
+
+.feature-card p {
+    color: #555;
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Permite que o parágrafo ocupe o espaço disponível */
+}
+
+.feature-card .botao-bolinha {
+    margin-top: auto; /* Empurra o botão para baixo */
+    margin-bottom: 0;
+}
+
+/* Estilos gerais para wrappers de página (para padronizar padding-top e max-width) */
+.main-content-wrapper {
+    padding-top: 100px; /* Altura do cabeçalho */
+    padding-bottom: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Responsividade Global */
+@media (max-width: 1024px) {
   .menu {
-    flex-direction: column;
-    gap: 12px;
+    gap: 20px;
   }
 
-  .logopv {
-    margin: 0 0 12px 0;
+  .login {
+    padding-left: 50px;
   }
 
   h1 {
-    font-size: 2.2em;
-    margin: 60px 10px 10px 10px;
+    font-size: 80px;
+  }
+
+  h3 {
+    font-size: 38px;
+  }
+
+  h7 {
+    font-size: 38px;
+  }
+
+  .bloco-com-imagem {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .texto-bloco, .imagem-lado {
+    max-width: 100%;
     text-align: center;
+  }
+
+  .imagem-lado {
+    margin-top: 30px;
+  }
+
+  .imagens-centrais {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .imagem-com-caixa img {
+    width: 250px;
+  }
+
+  .contato-lateral {
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .container-contato-tabela {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-left: 0;
+  }
+
+  .tabela-com-botao {
+    width: 100%;
+    max-width: 340px; /* Mantém a largura máxima para o formulário */
+  }
+
+  .modal-conteudo, .modal-login-conteudo {
+    width: 95%;
+  }
+
+  .feature-card {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+  .cabeçalho {
+    flex-direction: column;
+    padding: 15px 10px;
+  }
+
+  .logo {
+    height: 60px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 15px;
+  }
+
+  .login {
+    padding-left: 0;
+  }
+
+  .menu li a {
+    font-size: 1em;
+    padding: 5px 10px;
+  }
+
+  h1 {
+    font-size: 60px;
+    margin-top: 30px;
   }
 
   h2 {
-    margin: 20px 10px 10px 10px;
+    font-size: 22px;
+    margin: 20px 0 10px 0;
     text-align: center;
   }
 
-  .botao-bolinha {
-    margin-left: 0;
-    width: 100%;
-    justify-content: center;
+  h3 {
+    font-size: 30px;
+    margin-top: 100px;
   }
 
-  .login-tabela, .quadro-lateral-tabela {
-    width: 98vw;
+  h7 {
+    font-size: 30px;
+    margin-top: 100px;
+  }
+
+  .planos-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .plano-card {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .rodape-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .rodape-navegacao h5,
+  .rodape-contato h5,
+  .rodape-redes h5 {
+    text-align: center;
+  }
+
+  .rodape-navegacao ul {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .perfil-container, .agenda-content, .historico-header, .historico-tabela-container, .faq-container, .historico-filtros {
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .form-group, .form-group-button {
     min-width: unset;
-    padding: 0 8px 24px 8px;
+    width: 100%;
+    margin-bottom: 15px;
   }
 
-  .login-campo, .campo-tabela, .login-botao, .enviar-botao {
-    width: 100%;
-    font-size: 1em;
+  .form-group-button {
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  h3, h7 {
+    font-size: 24px;
+  }
+
+  .cadastre-se a {
+    padding: 8px 20px;
+    font-size: 0.9em;
+  }
+
+  .botao-bolinha {
+    padding: 8px 20px;
+    font-size: 0.9em;
+  }
+
+  .modal-conteudo, .modal-login-conteudo {
+    padding: 25px;
+  }
+
+  .modal-conteudo h2, .modal-login-conteudo h2 {
+    font-size: 1.8em;
   }
 }
