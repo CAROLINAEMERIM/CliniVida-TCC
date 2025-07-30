@@ -1,3 +1,8 @@
+/* ===================== RESET E GLOBAIS ===================== */
+* {
+  box-sizing: border-box;
+}
+
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -15,6 +20,12 @@ body {
   background-size: 100% auto;
   padding-top: 100px; /* ajuste conforme a altura do seu cabeçalho */
   background-attachment: fixed;
+}
+
+.destaque-home {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 2rem;
 }
 
 /* ===================== CABEÇALHO E MENU ===================== */
@@ -381,6 +392,7 @@ h5 {
 /* ===================== FORMULÁRIOS E TABELAS ===================== */
 .quadro-lateral-tabela {
   width: 340px;
+  max-width: 100%;
   background: #885d9f;
   border-radius: 24px;
   box-shadow: 0 2px 16px rgba(0,0,0,0.10);
@@ -393,6 +405,7 @@ h5 {
   margin: 0;
   text-align: right;
 }
+
 
 .campo-tabela {
   width: 100%;
@@ -422,6 +435,7 @@ h5 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .enviar-botao {
@@ -432,6 +446,7 @@ h5 {
   position: static;
 }
 
+/* ===================== FORMULÁRIO DE CONTATO ===================== */
 /* ===================== CONTATO ===================== */
 .contato-lateral {
   display: flex;
@@ -481,6 +496,59 @@ h5 {
   gap: 250px;
   margin-left: 100px;
   margin-top: 15px;
+}
+
+.formulario-contato {
+  background: #885d9f;
+  border-radius: 24px;
+  padding: 32px 24px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+  max-width: 400px;
+  width: 100%;
+}
+
+.formulario-contato fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.formulario-contato legend {
+  color: #fff;
+  font-size: 1.4em;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: center;
+  width: 100%;
+}
+
+.formulario-contato p {
+  color: #fff;
+  font-size: 0.9em;
+  margin-bottom: 20px;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.campo-contato {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.campo-contato input,
+.campo-contato textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  background: #fff;
+  color: #885d9f;
+  font-size: 1em;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: vertical;
 }
 
 /* ===================== MODAIS ===================== */
@@ -580,6 +648,19 @@ h5 {
   transform: translateY(-2px);
 }
 
+/* Estilos específicos para modais de login e cadastro */
+.modal-login, .modal-cadastro {
+  display: none;
+}
+
+.modal-login.ativo, .modal-cadastro.ativo {
+  display: flex;
+}
+
+.modal-login .modal-conteudo, .modal-cadastro .modal-conteudo {
+  max-width: 450px;
+}
+
 /* MODAL DE LOGIN E CADASTRO - Usam a base do modal-plano */
 .modal-login {
   display: none;
@@ -676,6 +757,10 @@ h5 {
   transition: background 0.2s;
 }
 
+.modal-assinar {
+  border: none;
+}
+
 .login-botao:hover {
   background: #6d4685;
 }
@@ -702,6 +787,11 @@ h5 {
     color: #555;
 }
 
+.genero-opcoes {
+    display: flex;
+    gap: 15px;
+}
+
 .login-campo-genero label {
     font-weight: 400;
 }
@@ -712,6 +802,7 @@ h5 {
 
 /* ===================== RODAPÉ ===================== */
 .rodape {
+  width: 100%;
   background: #333;
   color: #fff;
   padding: 40px 0;
@@ -719,7 +810,7 @@ h5 {
   box-sizing: border-box; /* Inclui padding no cálculo da largura/altura */
 }
 
-.rodape-container {
+.rodape-conteudo {
   display: flex;
   flex-wrap: wrap; /* Permite que as colunas quebrem para a próxima linha em telas menores */
   justify-content: flex-start; /* Alinha as colunas à esquerda */
@@ -730,7 +821,16 @@ h5 {
   gap: 50px; /* Espaçamento entre as colunas */
 }
 
-.rodape-navegacao,
+.rodape-logo {
+  flex: 0 0 auto;
+  margin-bottom: 30px;
+}
+
+.rodape-logo img {
+  height: 60px;
+}
+
+.rodape-mapa,
 .rodape-contato,
 .rodape-redes {
   flex: 1; /* Permite que os itens cresçam e encolham igualmente */
@@ -739,33 +839,34 @@ h5 {
   text-align: left; /* Alinha todo o texto dentro da coluna à esquerda */
 }
 
-.rodape-navegacao h5,
+.rodape-mapa h5,
 .rodape-contato h5,
 .rodape-redes h5 {
   color: #885d9f; /* Cor dos títulos */
   font-size: 1.2em;
+  font-weight: 700;
   margin-bottom: 20px;
   text-align: left; /* Garante o alinhamento do título */
 }
 
-.rodape-navegacao ul {
+.rodape-mapa ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.rodape-navegacao ul li {
+.rodape-mapa ul li {
   margin-bottom: 8px; /* Espaçamento entre os itens da lista */
 }
 
-.rodape-navegacao ul li a {
+.rodape-mapa ul li a {
   color: #fff;
   text-decoration: none;
   transition: color 0.2s;
   display: inline-block; /* Essencial para hover e padding se necessário */
 }
 
-.rodape-navegacao ul li a:hover {
+.rodape-mapa ul li a:hover {
   color: #bba6d6;
 }
 
@@ -773,6 +874,7 @@ h5 {
   margin-bottom: 10px;
   font-size: 1em;
   line-height: 1.5;
+  color: #fff;
 }
 
 .rodape-redes {
@@ -802,6 +904,7 @@ h5 {
 
 .rodape-copy {
   text-align: center;
+  width: 100%;
   margin-top: 30px;
   padding-top: 20px;
   border-top: 1px solid #444;
@@ -811,14 +914,14 @@ h5 {
 
 /* Responsividade para telas menores */
 @media (max-width: 768px) {
-  .rodape-container {
+  .rodape-conteudo {
     flex-direction: column; /* Empilha as colunas verticalmente */
     align-items: flex-start; /* Alinha todas as colunas empilhadas à esquerda */
     padding: 0 30px; /* Ajusta o padding lateral para telas menores */
     gap: 30px; /* Reduz o espaçamento vertical entre as seções */
   }
 
-  .rodape-navegacao,
+  .rodape-mapa,
   .rodape-contato,
   .rodape-redes {
     width: 100%; /* Ocupa a largura total disponível */
@@ -826,14 +929,27 @@ h5 {
     margin-bottom: 0; /* Apenas o gap controla o espaçamento vertical */
   }
 
-  .rodape-navegacao ul {
+  .rodape-mapa ul {
     align-items: flex-start; /* Garante que a lista de links mantenha o alinhamento à esquerda */
   }
 }
 
 @media (max-width: 480px) {
-    .rodape-container {
+    .rodape-conteudo {
         padding: 0 15px; /* Reduz o padding para telas muito pequenas */
+    }
+    
+    .container-contato-tabela {
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      margin-left: 0;
+    }
+    
+    .contato-lateral {
+      margin-left: 0;
+      text-align: center;
+      align-items: center;
     }
 }
 

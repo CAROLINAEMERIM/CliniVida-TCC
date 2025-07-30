@@ -44,14 +44,14 @@ if (botaoEnviar) {
 function abrirModal(idModal) {
   const modal = document.getElementById(idModal);
   if (modal) {
-    modal.style.display = 'flex'; // Mostra o modal (flex para centralizar)
+    modal.classList.add('ativo'); // Adiciona a classe 'ativo' para mostrar e animar
   }
 }
 
 function fecharModal(idModal) {
   const modal = document.getElementById(idModal);
   if (modal) {
-    modal.style.display = 'none'; // Esconde o modal
+    modal.classList.remove('ativo'); // Remove a classe 'ativo' para esconder
   }
 }
 
@@ -59,7 +59,7 @@ function fecharModal(idModal) {
 function abrirModalAnimado(idModal, triggerId) {
   const modal = document.getElementById(idModal);
   if (modal) {
-    modal.classList.add('ativo'); // Adiciona a classe 'ativo' para mostrar e animar
+    modal.classList.add('ativo');
   }
 }
 
@@ -67,7 +67,7 @@ const btnLogin = document.getElementById('abrir-login');
 if (btnLogin) {
   btnLogin.addEventListener('click', function(e) {
     e.preventDefault();
-    abrirModalAnimado('modal-login', 'abrir-login');
+    abrirModal('modal-login');
   });
 }
 
@@ -75,7 +75,7 @@ const btnCadastro = document.getElementById('abrir-cadastro');
 if (btnCadastro) {
   btnCadastro.addEventListener('click', function(e) {
     e.preventDefault();
-    abrirModalAnimado('modal-cadastro', 'abrir-cadastro');
+    abrirModal('modal-cadastro');
   });
 }
 
@@ -84,7 +84,7 @@ window.addEventListener('click', function(event) {
   const modals = document.querySelectorAll('.modal-plano.ativo');
   modals.forEach(modal => {
     if (event.target === modal) {
-      fecharModal(modal.id);
+      modal.classList.remove('ativo');
     }
   });
 });
@@ -95,7 +95,7 @@ if (linkCadastro) {
   linkCadastro.addEventListener('click', function(e) {
     e.preventDefault();
     fecharModal('modal-login');
-    setTimeout(() => abrirModalAnimado('modal-cadastro', 'abrir-cadastro'), 350);
+    setTimeout(() => abrirModal('modal-cadastro'), 350);
   });
 }
 
@@ -109,11 +109,12 @@ if (formLogin) {
     const senha = document.getElementById('login-password').value;
 
     // Busca os dados salvos no cadastro
-    const emailCadastrado = localStorage.getItem('paciente_email');
-    const senhaCadastrada = localStorage.getItem('paciente_senha');
+    const emailCadastrado = 'admin@admin.com';
+    const senhaCadastrada = 'admin';
 
     if (email === emailCadastrado && senha === senhaCadastrada) {
-      window.location.href = 'paciente.html';
+      alert('Login realizado com sucesso!');
+      window.location.href = './paciente.html';
     } else {
       alert('E-mail ou senha incorretos!');
     }
@@ -143,9 +144,10 @@ if (formCadastro) {
     localStorage.setItem('paciente_genero', genero);
 
 
-    alert('Cadastro realizado com sucesso! Faça login para continuar.');
-    fecharModal('modal-cadastro'); // Fecha o modal de cadastro
-    abrirModalAnimado('modal-login'); // Abre o modal de login para o usuário logar
+    alert('Cadastro realizado com sucesso! Redirecionando...');
+    fecharModal('modal-cadastro');
+    // Redireciona diretamente para a página do paciente após cadastro
+    window.location.href = './paciente.html';
   });
 }
 
