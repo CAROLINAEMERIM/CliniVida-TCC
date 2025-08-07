@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Consultas - CliniVida</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/profissional.css">
+</head>
+<body class="profissional-page">
+    <header class="header-profissional">
+        <div class="header-left">
+            <img src="../assets/logo.png" alt="Logo CliniVida" class="logo-profissional">
+            <h2 class="nome-profissional">Dr(a). <span id="nome-profissional">Camila Emerim</span></h2>
+        </div>
+        <button class="btn-logout" id="logout-btn">Sair</button>
+    </header>
+
+    <div class="layout-profissional">
+        <aside class="sidebar-profissional">
+            <nav class="nav-profissional">
+                <ul>
+                    <li><a href="index.html" class="nav-item">📊 Dashboard</a></li>
+                    <li><a href="consultas.html" class="nav-item">📅 Consultas Agendadas</a></li>
+                    <li><a href="historico.html" class="nav-item active">📋 Histórico de Consultas</a></li>
+                    <li><a href="pacientes.html" class="nav-item">👥 Pacientes</a></li>
+                    <li><a href="arquivos.html" class="nav-item">📎 Arquivos Compartilhados</a></li>
+                    <li><a href="perfil.html" class="nav-item">👤 Meu Perfil</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-profissional">
+            <div class="page-header">
+                <h1>Histórico de Consultas</h1>
+                <p>Consulte suas consultas anteriores e anotações</p>
+            </div>
+
+            <div class="filtros-historico">
+                <div class="filtro-grupo">
+                    <label for="periodo-inicial">Período inicial:</label>
+                    <input type="date" id="periodo-inicial" class="input-filtro">
+                </div>
+                <div class="filtro-grupo">
+                    <label for="periodo-final">Período final:</label>
+                    <input type="date" id="periodo-final" class="input-filtro">
+                </div>
+                <div class="filtro-grupo">
+                    <label for="buscar-paciente">Buscar paciente:</label>
+                    <input type="text" id="buscar-paciente" placeholder="Nome do paciente" class="input-filtro">
+                </div>
+                <button class="btn btn-filtrar">Pesquisar</button>
+            </div>
+
+            <div class="historico-table-container">
+                <table class="historico-table">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Paciente</th>
+                            <th>Tipo de Atendimento</th>
+                            <th>Notas</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>15/01/2025</td>
+                            <td>João Santos</td>
+                            <td>Consulta Nutricional</td>
+                            <td>Plano alimentar criado. Paciente motivado.</td>
+                            <td>
+                                <button class="btn-mini" onclick="visualizarDetalhes('joao-santos-15-01')">Ver Detalhes</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>12/01/2025</td>
+                            <td>Maria Oliveira</td>
+                            <td>Consulta de Retorno</td>
+                            <td>Perdeu 2kg. Ajustes no plano.</td>
+                            <td>
+                                <button class="btn-mini" onclick="visualizarDetalhes('maria-oliveira-12-01')">Ver Detalhes</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>10/01/2025</td>
+                            <td>Pedro Silva</td>
+                            <td>Consulta Inicial</td>
+                            <td>Primeira consulta. Histórico coletado.</td>
+                            <td>
+                                <button class="btn-mini" onclick="visualizarDetalhes('pedro-silva-10-01')">Ver Detalhes</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>08/01/2025</td>
+                            <td>Ana Costa</td>
+                            <td>Consulta Nutricional</td>
+                            <td>Revisão do plano alimentar.</td>
+                            <td>
+                                <button class="btn-mini" onclick="visualizarDetalhes('ana-costa-08-01')">Ver Detalhes</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>05/01/2025</td>
+                            <td>Carlos Lima</td>
+                            <td>Consulta de Retorno</td>
+                            <td>Bons resultados. Manter plano atual.</td>
+                            <td>
+                                <button class="btn-mini" onclick="visualizarDetalhes('carlos-lima-05-01')">Ver Detalhes</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Detalhes do Histórico -->
+    <div id="modal-detalhes-historico" class="modal-profissional">
+        <div class="modal-conteudo-profissional">
+            <button class="modal-fechar" onclick="fecharModal('modal-detalhes-historico')">&times;</button>
+            <h2>Detalhes da Consulta</h2>
+            <div id="detalhes-historico-conteudo">
+                <!-- Conteúdo será preenchido via JavaScript -->
+            </div>
+            <div class="modal-acoes">
+                <button class="btn btn-secundario">Ver Ficha Completa</button>
+                <button class="btn btn-terciario">Imprimir Relatório</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            if (confirm('Deseja realmente sair?')) {
+                localStorage.removeItem('profissional_logado');
+                window.location.href = '../index.html';
+            }
+        });
+
+        // Carregar nome do profissional
+        document.addEventListener('DOMContentLoaded', function() {
+            const nomeProfissional = localStorage.getItem('profissional_nome') || 'Profissional';
+            document.getElementById('nome-profissional').textContent = nomeProfissional;
+        });
+
+        // Função para visualizar detalhes do histórico
+        function visualizarDetalhes(consultaId) {
+            const modal = document.getElementById('modal-detalhes-historico');
+            const conteudo = document.getElementById('detalhes-historico-conteudo');
+            
+            // Dados simulados baseados no ID da consulta
+            const dadosHistorico = {
+                'joao-santos-15-01': {
+                    paciente: 'João Santos',
+                    data: '15/01/2025',
+                    tipo: 'Consulta Nutricional',
+                    duracao: '45 minutos',
+                    peso: '85kg',
+                    altura: '1.75m',
+                    imc: '27.8',
+                    observacoes: 'Paciente apresentou boa receptividade ao plano alimentar proposto. Criado cardápio personalizado com foco em redução de peso. Meta: perder 8kg em 3 meses.',
+                    proximaConsulta: '29/01/2025'
+                },
+                'maria-oliveira-12-01': {
+                    paciente: 'Maria Oliveira',
+                    data: '12/01/2025',
+                    tipo: 'Consulta de Retorno',
+                    duracao: '30 minutos',
+                    peso: '68kg',
+                    altura: '1.65m',
+                    imc: '25.0',
+                    observacoes: 'Excelente progresso! Perdeu 2kg desde a última consulta. Relatou maior disposição e melhora no sono. Pequenos ajustes no plano para acelerar resultados.',
+                    proximaConsulta: '26/01/2025'
+                }
+            };
+
+            const dados = dadosHistorico[consultaId] || {
+                paciente: 'Paciente',
+                data: 'Data não encontrada',
+                tipo: 'Tipo não especificado',
+                observacoes: 'Detalhes não disponíveis.'
+            };
+            
+            conteudo.innerHTML = `
+                <div class="detalhes-historico-grid">
+                    <div class="detalhe-item">
+                        <strong>Paciente:</strong> ${dados.paciente}
+                    </div>
+                    <div class="detalhe-item">
+                        <strong>Data:</strong> ${dados.data}
+                    </div>
+                    <div class="detalhe-item">
+                        <strong>Tipo:</strong> ${dados.tipo}
+                    </div>
+                    ${dados.duracao ? `<div class="detalhe-item"><strong>Duração:</strong> ${dados.duracao}</div>` : ''}
+                    ${dados.peso ? `<div class="detalhe-item"><strong>Peso:</strong> ${dados.peso}</div>` : ''}
+                    ${dados.altura ? `<div class="detalhe-item"><strong>Altura:</strong> ${dados.altura}</div>` : ''}
+                    ${dados.imc ? `<div class="detalhe-item"><strong>IMC:</strong> ${dados.imc}</div>` : ''}
+                    <div class="detalhe-item observacoes-historico">
+                        <strong>Observações e Anotações:</strong><br>
+                        ${dados.observacoes}
+                    </div>
+                    ${dados.proximaConsulta ? `<div class="detalhe-item"><strong>Próxima Consulta:</strong> ${dados.proximaConsulta}</div>` : ''}
+                </div>
+            `;
+            
+            modal.style.display = 'flex';
+        }
+
+        // Função para fechar modal
+        function fecharModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Fechar modal clicando fora
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal-detalhes-historico');
+            if (event.target === modal) {
+                fecharModal('modal-detalhes-historico');
+            }
+        }
+
+        // Filtros de pesquisa
+        document.querySelector('.btn-filtrar').addEventListener('click', function() {
+            const periodoInicial = document.getElementById('periodo-inicial').value;
+            const periodoFinal = document.getElementById('periodo-final').value;
+            const buscarPaciente = document.getElementById('buscar-paciente').value.toLowerCase();
+            
+            // Implementar lógica de filtro aqui
+            alert(`Pesquisando histórico de ${periodoInicial || 'início'} a ${periodoFinal || 'fim'} para paciente: ${buscarPaciente || 'todos'}`);
+        });
+    </script>
+</body>
+</html>

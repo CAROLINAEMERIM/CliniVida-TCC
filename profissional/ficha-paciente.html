@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha do Paciente - CliniVida</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/profissional.css">
+</head>
+<body class="profissional-page">
+    <header class="header-profissional">
+        <div class="header-left">
+            <img src="../assets/logo.png" alt="Logo CliniVida" class="logo-profissional">
+            <h2 class="nome-profissional">Dr(a). <span id="nome-profissional">Camila Emerim</span></h2>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-voltar" onclick="history.back()">← Voltar</button>
+            <button class="btn-logout" id="logout-btn">Sair</button>
+        </div>
+    </header>
+
+    <div class="layout-profissional">
+        <aside class="sidebar-profissional">
+            <nav class="nav-profissional">
+                <ul>
+                    <li><a href="index.html" class="nav-item">📊 Dashboard</a></li>
+                    <li><a href="consultas.html" class="nav-item">📅 Consultas Agendadas</a></li>
+                    <li><a href="historico.html" class="nav-item">📋 Histórico de Consultas</a></li>
+                    <li><a href="pacientes.html" class="nav-item active">👥 Pacientes</a></li>
+                    <li><a href="arquivos.html" class="nav-item">📎 Arquivos Compartilhados</a></li>
+                    <li><a href="perfil.html" class="nav-item">👤 Meu Perfil</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-profissional">
+            <div class="ficha-header">
+                <div class="paciente-avatar-grande">👤</div>
+                <div class="paciente-info-principal">
+                    <h1 id="nome-paciente">Ana Costa</h1>
+                    <p id="idade-paciente">28 anos</p>
+                    <p id="email-paciente">📧 ana.costa@email.com</p>
+                    <p id="telefone-paciente">📞 (11) 99999-9999</p>
+                </div>
+                <div class="ficha-acoes">
+                    <button class="btn btn-primario" onclick="abrirModalAgendamento()">Nova Consulta</button>
+                    <button class="btn btn-secundario" onclick="abrirModalEdicao()">Editar Dados</button>
+                </div>
+            </div>
+
+            <div class="ficha-tabs">
+                <button class="tab-btn active" onclick="mostrarTab('dados-pessoais')">Dados Pessoais</button>
+                <button class="tab-btn" onclick="mostrarTab('historico-clinico')">Histórico Clínico</button>
+                <button class="tab-btn" onclick="mostrarTab('consultas-realizadas')">Consultas</button>
+                <button class="tab-btn" onclick="mostrarTab('arquivos-compartilhados')">Arquivos</button>
+                <button class="tab-btn" onclick="mostrarTab('anotacoes')">Anotações</button>
+            </div>
+
+            <div class="ficha-conteudo">
+                <div id="dados-pessoais" class="tab-content active">
+                    <div class="dados-grid">
+                        <div class="dado-item">
+                            <strong>Nome Completo:</strong>
+                            <span>Ana Costa Silva</span>
+                        </div>
+                        <div class="dado-item">
+                            <strong>Data de Nascimento:</strong>
+                            <span>15/03/1996</span>
+                        </div>
+                        <div class="dado-item">
+                            <strong>CPF:</strong>
+                            <span>123.456.789-00</span>
+                        </div>
+                        <div class="dado-item">
+                            <strong>Gênero:</strong>
+                            <span>Feminino</span>
+                        </div>
+                        <div class="dado-item">
+                            <strong>Estado Civil:</strong>
+                            <span>Solteira</span>
+                        </div>
+                        <div class="dado-item">
+                            <strong>Profissão:</strong>
+                            <span>Designer Gráfica</span>
+                        </div>
+                        <div class="dado-item">
+                            <strong>Endereço:</strong>
+                            <span>Rua das Flores, 123 - São Paulo, SP</span>
+                        </div>
+                        <div class="dado-item">
+                            <strong>Plano:</strong>
+                            <span>Nutrição Essencial</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="historico-clinico" class="tab-content">
+                    <div class="historico-clinico-grid">
+                        <div class="clinico-item">
+                            <strong>Peso Atual:</strong>
+                            <span>65kg</span>
+                        </div>
+                        <div class="clinico-item">
+                            <strong>Altura:</strong>
+                            <span>1.65m</span>
+                        </div>
+                        <div class="clinico-item">
+                            <strong>IMC:</strong>
+                            <span>23.9 (Normal)</span>
+                        </div>
+                        <div class="clinico-item">
+                            <strong>Tipo Sanguíneo:</strong>
+                            <span>O+</span>
+                        </div>
+                        <div class="clinico-item">
+                            <strong>Alergias:</strong>
+                            <span>Lactose, Amendoim</span>
+                        </div>
+                        <div class="clinico-item">
+                            <strong>Comorbidades:</strong>
+                            <span>Nenhuma</span>
+                        </div>
+                        <div class="clinico-item">
+                            <strong>Medicamentos:</strong>
+                            <span>Vitamina D3 (2000 UI/dia)</span>
+                        </div>
+                        <div class="clinico-item">
+                            <strong>Objetivo:</strong>
+                            <span>Reeducação alimentar e manutenção do peso</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="consultas-realizadas" class="tab-content">
+                    <div class="consultas-lista">
+                        <div class="consulta-item">
+                            <div class="consulta-data">08/01/2025</div>
+                            <div class="consulta-detalhes">
+                                <h4>Consulta Nutricional</h4>
+                                <p>Revisão do plano alimentar. Paciente relatou melhora na disposição.</p>
+                            </div>
+                            <button class="btn-mini">Ver Detalhes</button>
+                        </div>
+                        <div class="consulta-item">
+                            <div class="consulta-data">22/12/2024</div>
+                            <div class="consulta-detalhes">
+                                <h4>Consulta Inicial</h4>
+                                <p>Primeira consulta. Anamnese completa realizada.</p>
+                            </div>
+                            <button class="btn-mini">Ver Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="arquivos-compartilhados" class="tab-content">
+                    <div class="arquivos-lista">
+                        <div class="arquivo-item">
+                            <div class="arquivo-icon">📄</div>
+                            <div class="arquivo-info">
+                                <h4>Plano Alimentar - Janeiro 2025</h4>
+                                <p>Enviado em 08/01/2025</p>
+                            </div>
+                            <div class="arquivo-acoes">
+                                <button class="btn-mini">Baixar</button>
+                                <button class="btn-mini-danger">Excluir</button>
+                            </div>
+                        </div>
+                        <div class="arquivo-item">
+                            <div class="arquivo-icon">📊</div>
+                            <div class="arquivo-info">
+                                <h4>Relatório Nutricional</h4>
+                                <p>Enviado em 22/12/2024</p>
+                            </div>
+                            <div class="arquivo-acoes">
+                                <button class="btn-mini">Baixar</button>
+                                <button class="btn-mini-danger">Excluir</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primario">+ Compartilhar Novo Arquivo</button>
+                </div>
+
+                <div id="anotacoes" class="tab-content">
+                    <div class="anotacoes-container">
+                        <div class="anotacao-item">
+                            <div class="anotacao-header">
+                                <strong>08/01/2025</strong>
+                                <button class="btn-mini-danger">Excluir</button>
+                            </div>
+                            <p>Paciente demonstrou boa aderência ao plano alimentar. Relatou melhora significativa na disposição e qualidade do sono. Sugeriu incluir mais proteínas no café da manhã.</p>
+                        </div>
+                        <div class="anotacao-item">
+                            <div class="anotacao-header">
+                                <strong>22/12/2024</strong>
+                                <button class="btn-mini-danger">Excluir</button>
+                            </div>
+                            <p>Primeira consulta muito produtiva. Paciente motivada e com objetivos claros. Histórico familiar de diabetes - atenção especial ao controle glicêmico.</p>
+                        </div>
+                    </div>
+                    <div class="nova-anotacao">
+                        <h3>Nova Anotação</h3>
+                        <textarea id="nova-anotacao-texto" placeholder="Digite sua anotação aqui..." rows="4"></textarea>
+                        <button class="btn btn-primario" onclick="adicionarAnotacao()">Salvar Anotação</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para edição de dados do paciente -->
+    <div id="modal-editar-paciente" class="modal-profissional">
+        <div class="modal-conteudo-profissional modal-edicao-paciente">
+            <button class="modal-fechar" onclick="fecharModalEdicao()">&times;</button>
+            <h2>Editar Dados do Paciente</h2>
+            
+            <div class="modal-tabs">
+                <button class="modal-tab-btn active" onclick="mostrarTabModal('dados-basicos-modal')">Dados Básicos</button>
+                <button class="modal-tab-btn" onclick="mostrarTabModal('historico-clinico-modal')">Histórico Clínico</button>
+            </div>
+
+            <form id="form-editar-paciente">
+                <div id="dados-basicos-modal" class="modal-tab-content active">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-nome-completo">Nome Completo*</label>
+                            <input type="text" id="edit-nome-completo" name="nome-completo" value="Ana Costa Silva" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-data-nascimento">Data de Nascimento*</label>
+                            <input type="date" id="edit-data-nascimento" name="data-nascimento" value="1996-03-15" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-cpf">CPF*</label>
+                            <input type="text" id="edit-cpf" name="cpf" value="123.456.789-00" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-genero">Gênero</label>
+                            <select id="edit-genero" name="genero">
+                                <option value="feminino" selected>Feminino</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-email">E-mail*</label>
+                            <input type="email" id="edit-email" name="email" value="ana.costa@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-telefone">Telefone*</label>
+                            <input type="tel" id="edit-telefone" name="telefone" value="(11) 99999-9999" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-estado-civil">Estado Civil</label>
+                            <select id="edit-estado-civil" name="estado-civil">
+                                <option value="solteiro" selected>Solteiro(a)</option>
+                                <option value="casado">Casado(a)</option>
+                                <option value="divorciado">Divorciado(a)</option>
+                                <option value="viuvo">Viúvo(a)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-profissao">Profissão</label>
+                            <input type="text" id="edit-profissao" name="profissao" value="Designer Gráfica">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="edit-endereco">Endereço</label>
+                            <input type="text" id="edit-endereco" name="endereco" value="Rua das Flores, 123 - São Paulo, SP">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="historico-clinico-modal" class="modal-tab-content">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-peso">Peso Atual (kg)*</label>
+                            <input type="number" id="edit-peso" name="peso" value="65" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-altura">Altura (m)*</label>
+                            <input type="number" id="edit-altura" name="altura" value="1.65" step="0.01" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-tipo-sanguineo">Tipo Sanguíneo</label>
+                            <select id="edit-tipo-sanguineo" name="tipo-sanguineo">
+                                <option value="">Selecione</option>
+                                <option value="A+" >A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+" selected>O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-imc">IMC (calculado automaticamente)</label>
+                            <input type="text" id="edit-imc" name="imc" value="23.9 (Normal)" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-alergias">Alergias</label>
+                            <input type="text" id="edit-alergias" name="alergias" value="Lactose, Amendoim" placeholder="Separe por vírgulas">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-comorbidades">Comorbidades</label>
+                            <input type="text" id="edit-comorbidades" name="comorbidades" value="Nenhuma" placeholder="Separe por vírgulas">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-medicamentos">Medicamentos em Uso</label>
+                            <input type="text" id="edit-medicamentos" name="medicamentos" value="Vitamina D3 (2000 UI/dia)" placeholder="Separe por vírgulas">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-objetivo">Objetivo Principal</label>
+                            <input type="text" id="edit-objetivo" name="objetivo" value="Reeducação alimentar e manutenção do peso">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="edit-observacoes-clinicas">Observações Clínicas</label>
+                            <textarea id="edit-observacoes-clinicas" name="observacoes-clinicas" rows="4" placeholder="Informações adicionais sobre o histórico clínico do paciente..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-acoes-edicao">
+                    <button type="button" class="btn btn-terciario" onclick="fecharModalEdicao()">Cancelar</button>
+                    <button type="submit" class="btn btn-primario">Salvar Alterações</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Agendamento -->
+    <div id="modal-agendamento" class="modal-profissional" style="display: none;">
+        <div class="modal-conteudo-profissional">
+            <button class="modal-fechar" onclick="fecharModalAgendamento()">&times;</button>
+            <h2>Agendar Nova Consulta</h2>
+            <p>Selecione a data e horário para a consulta de <strong id="nome-paciente-modal">Ana Costa</strong></p>
+            
+            <div class="agendamento-steps">
+                <!-- Etapa 1: Seleção de Data -->
+                <div id="etapa-data-modal" class="agenda-step-modal active">
+                    <h3>Escolha a Data</h3>
+                    <div class="calendar-nav">
+                        <span id="prevMonth-modal" class="arrow-nav">‹</span>
+                        <span id="month-year-modal">Janeiro 2025</span>
+                        <span id="nextMonth-modal" class="arrow-nav">›</span>
+                    </div>
+                    <table class="calendar-modal">
+                        <thead>
+                            <tr>
+                                <th>Dom</th>
+                                <th>Seg</th>
+                                <th>Ter</th>
+                                <th>Qua</th>
+                                <th>Qui</th>
+                                <th>Sex</th>
+                                <th>Sab</th>
+                            </tr>
+                        </thead>
+                        <tbody id="calendar-days-modal"></tbody>
+                    </table>
+                    <div class="modal-acoes">
+                        <button class="btn btn-primario" onclick="proximaEtapaModal()" id="btn-proxima-data" disabled>Próximo</button>
+                    </div>
+                </div>
+
+                <!-- Etapa 2: Seleção de Horário -->
+                <div id="etapa-horario-modal" class="agenda-step-modal" style="display: none;">
+                    <h3>Escolha o Horário</h3>
+                    <p class="data-selecionada-modal">Data selecionada aparecerá aqui</p>
+                    <div class="horarios-grid-modal">
+                        <button class="horario-btn-modal">08:00</button>
+                        <button class="horario-btn-modal">08:30</button>
+                        <button class="horario-btn-modal">09:00</button>
+                        <button class="horario-btn-modal">09:30</button>
+                        <button class="horario-btn-modal">10:00</button>
+                        <button class="horario-btn-modal">10:30</button>
+                        <button class="horario-btn-modal">11:00</button>
+                        <button class="horario-btn-modal">11:30</button>
+                        <button class="horario-btn-modal">13:00</button>
+                        <button class="horario-btn-modal">13:30</button>
+                        <button class="horario-btn-modal">14:00</button>
+                        <button class="horario-btn-modal">14:30</button>
+                        <button class="horario-btn-modal">15:00</button>
+                        <button class="horario-btn-modal">15:30</button>
+                        <button class="horario-btn-modal">16:00</button>
+                        <button class="horario-btn-modal">16:30</button>
+                        <button class="horario-btn-modal">17:00</button>
+                        <button class="horario-btn-modal">17:30</button>
+                    </div>
+                    <div class="modal-acoes">
+                        <button class="btn btn-secundario" onclick="voltarEtapaModal()">Voltar</button>
+                        <button class="btn btn-primario" onclick="confirmarAgendamento()" id="btn-confirmar-agendamento" disabled>Confirmar Agendamento</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            if (confirm('Deseja realmente sair?')) {
+                localStorage.removeItem('profissional_logado');
+                window.location.href = '../index.html';
+            }
+        });
+
+        // Carregar nome do profissional
+        document.addEventListener('DOMContentLoaded', function() {
+            const nomeProfissional = localStorage.getItem('profissional_nome') || 'Profissional';
+            document.getElementById('nome-profissional').textContent = nomeProfissional;
+            
+            // Carregar dados do paciente baseado no ID da URL
+            carregarDadosPaciente();
+        });
+
+        // Função para carregar dados do paciente
+        function carregarDadosPaciente() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const pacienteId = urlParams.get('id');
+            
+            // Dados simulados baseados no ID
+            const dadosPacientes = {
+                'ana-costa': {
+                    nome: 'Ana Costa',
+                    idade: '28 anos',
+                    email: 'ana.costa@email.com',
+                    telefone: '(11) 99999-9999'
+                },
+                'carlos-lima': {
+                    nome: 'Carlos Lima',
+                    idade: '35 anos',
+                    email: 'carlos.lima@email.com',
+                    telefone: '(11) 88888-8888'
+                },
+                'maria-silva': {
+                    nome: 'Maria Silva',
+                    idade: '42 anos',
+                    email: 'maria.silva@email.com',
+                    telefone: '(11) 77777-7777'
+                }
+            };
+
+            const paciente = dadosPacientes[pacienteId] || dadosPacientes['ana-costa'];
+            
+            document.getElementById('nome-paciente').textContent = paciente.nome;
+            document.getElementById('idade-paciente').textContent = paciente.idade;
+            document.getElementById('email-paciente').textContent = '📧 ' + paciente.email;
+            document.getElementById('telefone-paciente').textContent = '📞 ' + paciente.telefone;
+        }
+
+        // Função para mostrar tabs
+        function mostrarTab(tabId) {
+            // Esconder todas as tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remover classe active de todos os botões
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Mostrar tab selecionada
+            document.getElementById(tabId).classList.add('active');
+            
+            // Adicionar classe active ao botão clicado
+            event.target.classList.add('active');
+        }
+
+        // Função para abrir modal de edição
+        function abrirModalEdicao() {
+            document.getElementById('modal-editar-paciente').style.display = 'flex';
+            calcularIMC(); // Calcular IMC inicial
+        }
+
+        // Função para fechar modal de edição
+        function fecharModalEdicao() {
+            document.getElementById('modal-editar-paciente').style.display = 'none';
+        }
+
+        // Função para mostrar tabs do modal
+        function mostrarTabModal(tabId) {
+            // Esconder todas as tabs do modal
+            document.querySelectorAll('.modal-tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remover classe active de todos os botões do modal
+            document.querySelectorAll('.modal-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Mostrar tab selecionada
+            document.getElementById(tabId).classList.add('active');
+            
+            // Adicionar classe active ao botão clicado
+            event.target.classList.add('active');
+        }
+
+        // Função para calcular IMC automaticamente
+        function calcularIMC() {
+            const peso = parseFloat(document.getElementById('edit-peso').value);
+            const altura = parseFloat(document.getElementById('edit-altura').value);
+            
+            if (peso && altura) {
+                const imc = peso / (altura * altura);
+                let classificacao = '';
+                
+                if (imc < 18.5) classificacao = 'Abaixo do peso';
+                else if (imc < 25) classificacao = 'Normal';
+                else if (imc < 30) classificacao = 'Sobrepeso';
+                else classificacao = 'Obesidade';
+                
+                document.getElementById('edit-imc').value = `${imc.toFixed(1)} (${classificacao})`;
+            }
+        }
+
+        // Adicionar listeners para calcular IMC automaticamente
+        document.getElementById('edit-peso').addEventListener('input', calcularIMC);
+        document.getElementById('edit-altura').addEventListener('input', calcularIMC);
+
+        // Submissão do formulário de edição
+        document.getElementById('form-editar-paciente').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aqui você implementaria a lógica para salvar os dados
+            // Por exemplo, enviar para uma API ou atualizar localStorage
+            
+            // Atualizar os dados na interface
+            atualizarDadosInterface();
+            
+            alert('Dados do paciente atualizados com sucesso!');
+            fecharModalEdicao();
+        });
+
+        // Função para atualizar os dados na interface após edição
+        function atualizarDadosInterface() {
+            // Atualizar dados pessoais
+            const nomeCompleto = document.getElementById('edit-nome-completo').value;
+            const email = document.getElementById('edit-email').value;
+            const telefone = document.getElementById('edit-telefone').value;
+            
+            // Atualizar header
+            document.getElementById('nome-paciente').textContent = nomeCompleto.split(' ')[0] + ' ' + nomeCompleto.split(' ')[nomeCompleto.split(' ').length - 1];
+            document.getElementById('email-paciente').textContent = '📧 ' + email;
+            document.getElementById('telefone-paciente').textContent = '📞 ' + telefone;
+            
+            // Atualizar dados na aba de dados pessoais
+            const dadosGrid = document.querySelector('#dados-pessoais .dados-grid');
+            dadosGrid.innerHTML = `
+                <div class="dado-item">
+                    <strong>Nome Completo:</strong>
+                    <span>${document.getElementById('edit-nome-completo').value}</span>
+                </div>
+                <div class="dado-item">
+                    <strong>Data de Nascimento:</strong>
+                    <span>${new Date(document.getElementById('edit-data-nascimento').value).toLocaleDateString('pt-BR')}</span>
+                </div>
+                <div class="dado-item">
+                    <strong>CPF:</strong>
+                    <span>${document.getElementById('edit-cpf').value}</span>
+                </div>
+                <div class="dado-item">
+                    <strong>Gênero:</strong>
+                    <span>${document.getElementById('edit-genero').options[document.getElementById('edit-genero').selectedIndex].text}</span>
+                </div>
+                <div class="dado-item">
+                    <strong>Estado Civil:</strong>
+                    <span>${document.getElementById('edit-estado-civil').options[document.getElementById('edit-estado-civil').selectedIndex].text}</span>
+                </div>
+                <div class="dado-item">
+                    <strong>Profissão:</strong>
+                    <span>${document.getElementById('edit-profissao').value}</span>
+                </div>
+                <div class="dado-item">
+                    <strong>Endereço:</strong>
+                    <span>${document.getElementById('edit-endereco').value}</span>
+                </div>
+                <div class="dado-item">
+                    <strong>Plano:</strong>
+                    <span>Nutrição Essencial</span>
+                </div>
+            `;
+            
+            // Atualizar dados na aba de histórico clínico
+            const historicoGrid = document.querySelector('#historico-clinico .historico-clinico-grid');
+            historicoGrid.innerHTML = `
+                <div class="clinico-item">
+                    <strong>Peso Atual:</strong>
+                    <span>${document.getElementById('edit-peso').value}kg</span>
+                </div>
+                <div class="clinico-item">
+                    <strong>Altura:</strong>
+                    <span>${document.getElementById('edit-altura').value}m</span>
+                </div>
+                <div class="clinico-item">
+                    <strong>IMC:</strong>
+                    <span>${document.getElementById('edit-imc').value}</span>
+                </div>
+                <div class="clinico-item">
+                    <strong>Tipo Sanguíneo:</strong>
+                    <span>${document.getElementById('edit-tipo-sanguineo').value || 'Não informado'}</span>
+                </div>
+                <div class="clinico-item">
+                    <strong>Alergias:</strong>
+                    <span>${document.getElementById('edit-alergias').value || 'Nenhuma'}</span>
+                </div>
+                <div class="clinico-item">
+                    <strong>Comorbidades:</strong>
+                    <span>${document.getElementById('edit-comorbidades').value || 'Nenhuma'}</span>
+                </div>
+                <div class="clinico-item">
+                    <strong>Medicamentos:</strong>
+                    <span>${document.getElementById('edit-medicamentos').value || 'Nenhum'}</span>
+                </div>
+                <div class="clinico-item">
+                    <strong>Objetivo:</strong>
+                    <span>${document.getElementById('edit-objetivo').value || 'Não definido'}</span>
+                </div>
+            `;
+        }
+
+        // Fechar modal clicando fora
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('modal-editar-paciente');
+            if (event.target === modal) {
+                fecharModalEdicao();
+            }
+        });
+
+        // Função para adicionar anotação
+        function adicionarAnotacao() {
+            const texto = document.getElementById('nova-anotacao-texto').value;
+            if (texto.trim() === '') {
+                alert('Por favor, digite uma anotação');
+                return;
+            }
+            
+            const hoje = new Date().toLocaleDateString('pt-BR');
+            const novaAnotacao = document.createElement('div');
+            novaAnotacao.className = 'anotacao-item';
+            novaAnotacao.innerHTML = `
+                <div class="anotacao-header">
+                    <strong>${hoje}</strong>
+                    <button class="btn-mini-danger" onclick="this.parentElement.parentElement.remove()">Excluir</button>
+                </div>
+                <p>${texto}</p>
+            `;
+            
+            document.querySelector('.anotacoes-container').insertBefore(novaAnotacao, document.querySelector('.anotacoes-container').firstChild);
+            document.getElementById('nova-anotacao-texto').value = '';
+            
+            alert('Anotação adicionada com sucesso!');
+        }
+
+        // ===== MODAL DE AGENDAMENTO =====
+        let selectedDateModal = null;
+        let selectedTimeModal = null;
+        let currentMonthModal = new Date().getMonth();
+        let currentYearModal = new Date().getFullYear();
+
+        // Função para abrir modal de agendamento
+        function abrirModalAgendamento() {
+            document.getElementById('modal-agendamento').style.display = 'flex';
+            document.getElementById('nome-paciente-modal').textContent = document.getElementById('nome-paciente').textContent;
+            renderCalendarModal(currentYearModal, currentMonthModal);
+            resetModalState();
+        }
+
+        // Função para fechar modal de agendamento
+        function fecharModalAgendamento() {
+            document.getElementById('modal-agendamento').style.display = 'none';
+            resetModalState();
+        }
+
+        // Reset do estado do modal
+        function resetModalState() {
+            selectedDateModal = null;
+            selectedTimeModal = null;
+            document.getElementById('etapa-data-modal').style.display = 'block';
+            document.getElementById('etapa-horario-modal').style.display = 'none';
+            document.getElementById('btn-proxima-data').disabled = true;
+            document.getElementById('btn-confirmar-agendamento').disabled = true;
+            
+            // Limpar seleções
+            document.querySelectorAll('.selected-day-modal').forEach(d => d.classList.remove('selected-day-modal'));
+            document.querySelectorAll('.horario-btn-modal.active').forEach(h => h.classList.remove('active'));
+        }
+
+        // Renderizar calendário do modal
+        function renderCalendarModal(year, month) {
+            const calendarDays = document.getElementById('calendar-days-modal');
+            const monthYearDisplay = document.getElementById('month-year-modal');
+            
+            calendarDays.innerHTML = '';
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const numDays = lastDay.getDate();
+            const startDay = firstDay.getDay();
+            
+            monthYearDisplay.textContent = new Date(year, month).toLocaleString('pt-BR', { month: 'long', year: 'numeric' });
+            
+            let currentRow = document.createElement('tr');
+            let dayCount = 0;
+            
+            // Adicionar células vazias no início
+            for (let i = 0; i < startDay; i++) {
+                const emptyTd = document.createElement('td');
+                currentRow.appendChild(emptyTd);
+                dayCount++;
+            }
+            
+            // Adicionar os dias do mês
+            for (let day = 1; day <= numDays; day++) {
+                const dayTd = document.createElement('td');
+                dayTd.textContent = day;
+                
+                const currentDate = new Date();
+                const dayDate = new Date(year, month, day);
+                
+                if (dayDate < currentDate.setHours(0,0,0,0)) {
+                    dayTd.classList.add('past-day-modal');
+                } else if (day % 7 === 0 || day % 13 === 0) { // Simular dias indisponíveis
+                    dayTd.classList.add('unavailable-day-modal');
+                } else {
+                    dayTd.classList.add('available-day-modal');
+                    dayTd.addEventListener('click', function() {
+                        // Remove seleção anterior
+                        document.querySelectorAll('.selected-day-modal').forEach(d => d.classList.remove('selected-day-modal'));
+                        this.classList.add('selected-day-modal');
+                        selectedDateModal = dayDate;
+                        document.getElementById('btn-proxima-data').disabled = false;
+                        
+                        // Atualiza a data selecionada para a próxima etapa
+                        const dataSelecionada = document.querySelector('.data-selecionada-modal');
+                        if (dataSelecionada) {
+                            dataSelecionada.textContent = dayDate.toLocaleDateString('pt-BR', { 
+                                weekday: 'long', 
+                                day: 'numeric', 
+                                month: 'long' 
+                            });
+                        }
+                    });
+                }
+                
+                currentRow.appendChild(dayTd);
+                dayCount++;
+                
+                // Se completou uma semana, adiciona a linha e cria uma nova
+                if (dayCount % 7 === 0) {
+                    calendarDays.appendChild(currentRow);
+                    currentRow = document.createElement('tr');
+                }
+            }
+            
+            // Adicionar a última linha se não estiver vazia
+            if (dayCount % 7 !== 0) {
+                while (dayCount % 7 !== 0) {
+                    const emptyTd = document.createElement('td');
+                    currentRow.appendChild(emptyTd);
+                    dayCount++;
+                }
+                calendarDays.appendChild(currentRow);
+            }
+        }
+
+        // Navegação do calendário
+        document.getElementById('prevMonth-modal').addEventListener('click', () => {
+            currentMonthModal--;
+            if (currentMonthModal < 0) {
+                currentMonthModal = 11;
+                currentYearModal--;
+            }
+            renderCalendarModal(currentYearModal, currentMonthModal);
+        });
+
+        document.getElementById('nextMonth-modal').addEventListener('click', () => {
+            currentMonthModal++;
+            if (currentMonthModal > 11) {
+                currentMonthModal = 0;
+                currentYearModal++;
+            }
+            renderCalendarModal(currentYearModal, currentMonthModal);
+        });
+
+        // Próxima etapa (data -> horário)
+        function proximaEtapaModal() {
+            if (selectedDateModal) {
+                document.getElementById('etapa-data-modal').style.display = 'none';
+                document.getElementById('etapa-horario-modal').style.display = 'block';
+                
+                // Simular horários indisponíveis
+                const horariosIndisponiveis = ['09:00', '14:30', '16:00'];
+                document.querySelectorAll('.horario-btn-modal').forEach(btn => {
+                    if (horariosIndisponiveis.includes(btn.textContent)) {
+                        btn.classList.add('unavailable');
+                        btn.disabled = true;
+                    } else {
+                        btn.classList.remove('unavailable');
+                        btn.disabled = false;
+                        btn.addEventListener('click', function() {
+                            if (!this.classList.contains('unavailable')) {
+                                document.querySelectorAll('.horario-btn-modal.active').forEach(b => b.classList.remove('active'));
+                                this.classList.add('active');
+                                selectedTimeModal = this.textContent;
+                                document.getElementById('btn-confirmar-agendamento').disabled = false;
+                            }
+                        });
+                    }
+                });
+            }
+        }
+
+        // Voltar etapa (horário -> data)
+        function voltarEtapaModal() {
+            document.getElementById('etapa-horario-modal').style.display = 'none';
+            document.getElementById('etapa-data-modal').style.display = 'block';
+            selectedTimeModal = null;
+            document.getElementById('btn-confirmar-agendamento').disabled = true;
+            document.querySelectorAll('.horario-btn-modal.active').forEach(h => h.classList.remove('active'));
+        }
+
+        // Confirmar agendamento
+        function confirmarAgendamento() {
+            if (selectedDateModal && selectedTimeModal) {
+                const dataFormatada = selectedDateModal.toLocaleDateString('pt-BR');
+                const nomePaciente = document.getElementById('nome-paciente').textContent;
+                
+                alert(`Consulta agendada com sucesso!\n\nPaciente: ${nomePaciente}\nData: ${dataFormatada}\nHorário: ${selectedTimeModal}`);
+                
+                // Aqui você implementaria a lógica para salvar no backend
+                // Por exemplo: salvarConsultaNoBanco(nomePaciente, selectedDateModal, selectedTimeModal);
+                
+                fecharModalAgendamento();
+            }
+        }
+
+        // Fechar modal clicando fora
+        window.addEventListener('click', function(event) {
+            const modalAgendamento = document.getElementById('modal-agendamento');
+            const modalEdicao = document.getElementById('modal-editar-paciente');
+            
+            if (event.target === modalAgendamento) {
+                fecharModalAgendamento();
+            }
+            if (event.target === modalEdicao) {
+                fecharModalEdicao();
+            }
+        });
+    </script>
+</body>
+</html>

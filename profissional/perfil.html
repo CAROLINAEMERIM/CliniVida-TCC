@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - CliniVida</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/profissional.css">
+</head>
+<body class="profissional-page">
+    <header class="header-profissional">
+        <div class="header-left">
+            <img src="../assets/logo.png" alt="Logo CliniVida" class="logo-profissional">
+            <h2 class="nome-profissional">Dr(a). <span id="nome-profissional">Camila Emerim</span></h2>
+        </div>
+        <button class="btn-logout" id="logout-btn">Sair</button>
+    </header>
+
+    <div class="layout-profissional">
+        <aside class="sidebar-profissional">
+            <nav class="nav-profissional">
+                <ul>
+                    <li><a href="index.html" class="nav-item">📊 Dashboard</a></li>
+                    <li><a href="consultas.html" class="nav-item">📅 Consultas Agendadas</a></li>
+                    <li><a href="historico.html" class="nav-item">📋 Histórico de Consultas</a></li>
+                    <li><a href="pacientes.html" class="nav-item">👥 Pacientes</a></li>
+                    <li><a href="arquivos.html" class="nav-item">📎 Arquivos Compartilhados</a></li>
+                    <li><a href="perfil.html" class="nav-item active">👤 Meu Perfil</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-profissional">
+            <div class="page-header">
+                <h1>Meu Perfil Profissional</h1>
+                <p>Gerencie suas informações profissionais</p>
+            </div>
+
+            <div class="perfil-profissional-container">
+                <div class="perfil-avatar-section">
+                    <div class="perfil-avatar-container">
+                        <div id="avatar-display-profissional">
+                            <div class="avatar-placeholder">👤</div>
+                        </div>
+                        <button type="button" class="avatar-upload-btn" onclick="document.getElementById('avatar-input-profissional').click()">
+                            📷
+                        </button>
+                        <input type="file" id="avatar-input-profissional" class="avatar-upload-input" accept="image/*">
+                    </div>
+                </div>
+
+                <div class="perfil-form-section">
+                    <form class="form-perfil-profissional" id="form-perfil-profissional">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nome-completo">Nome Completo*</label>
+                                <input type="text" id="nome-completo" name="nome-completo" value="Camila Cardoso Emerim" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="especialidade">Especialidade*</label>
+                                <select id="especialidade" name="especialidade" required>
+                                    <option value="nutricionista" selected>Nutricionista</option>
+                                    <option value="personal-trainer">Personal Trainer</option>
+                                    <option value="medico">Médico</option>
+                                    <option value="fisioterapeuta">Fisioterapeuta</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="registro-profissional">Registro Profissional*</label>
+                                <input type="text" id="registro-profissional" name="registro-profissional" value="CRN-10 10656" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email-profissional">E-mail Profissional*</label>
+                                <input type="email" id="email-profissional" name="email-profissional" value="camila.emerim@clinivida.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="telefone-profissional">Telefone*</label>
+                                <input type="tel" id="telefone-profissional" name="telefone-profissional" value="(48) 99999-9999" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="data-nascimento">Data de Nascimento</label>
+                                <input type="date" id="data-nascimento" name="data-nascimento" value="1990-05-15">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label for="bio-profissional">Biografia Profissional</label>
+                                <textarea id="bio-profissional" name="bio-profissional" rows="4" placeholder="Conte um pouco sobre sua experiência e abordagem profissional...">Nutricionista formada pela UFSC com especialização em Nutrição Clínica. Atuo há 8 anos na área, com foco em reeducação alimentar e acompanhamento nutricional personalizado. Acredito que uma alimentação equilibrada é a base para uma vida saudável e feliz.</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="formacao">Formação Principal</label>
+                                <input type="text" id="formacao" name="formacao" value="Nutrição - UFSC (2016)">
+                            </div>
+                            <div class="form-group">
+                                <label for="especializacoes">Especializações</label>
+                                <input type="text" id="especializacoes" name="especializacoes" value="Nutrição Clínica, Nutrição Esportiva">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="experiencia">Anos de Experiência</label>
+                                <select id="experiencia" name="experiencia">
+                                    <option value="1-2">1-2 anos</option>
+                                    <option value="3-5">3-5 anos</option>
+                                    <option value="6-10" selected>6-10 anos</option>
+                                    <option value="10+">Mais de 10 anos</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="status-profissional">Status</label>
+                                <select id="status-profissional" name="status-profissional">
+                                    <option value="ativo" selected>Ativo</option>
+                                    <option value="inativo">Inativo</option>
+                                    <option value="ferias">Em Férias</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secundario" onclick="abrirModalSenhaProfissional()">Alterar Senha</button>
+                            <button type="submit" class="btn btn-primario">Salvar Alterações</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para alteração de senha -->
+    <div id="modal-senha-profissional" class="modal-senha">
+        <div class="modal-senha-conteudo">
+            <button class="modal-senha-fechar" onclick="fecharModalSenhaProfissional()">&times;</button>
+            <h2>Alterar Senha</h2>
+            <form class="form-senha" id="form-alterar-senha-profissional">
+                <div class="form-group-senha">
+                    <label for="senha-atual-prof">Senha Atual*</label>
+                    <input type="password" id="senha-atual-prof" name="senha-atual-prof" required>
+                </div>
+                <div class="form-group-senha">
+                    <label for="nova-senha-prof">Nova Senha*</label>
+                    <input type="password" id="nova-senha-prof" name="nova-senha-prof" required>
+                </div>
+                <div class="form-group-senha">
+                    <label for="confirmar-senha-prof">Confirmar Nova Senha*</label>
+                    <input type="password" id="confirmar-senha-prof" name="confirmar-senha-prof" required>
+                </div>
+                <div class="senha-requisitos">
+                    <h4>Requisitos da senha:</h4>
+                    <ul>
+                        <li>Mínimo de 8 caracteres</li>
+                        <li>Pelo menos uma letra maiúscula</li>
+                        <li>Pelo menos uma letra minúscula</li>
+                        <li>Pelo menos um número</li>
+                        <li>Pelo menos um caractere especial (!@#$%^&*)</li>
+                    </ul>
+                </div>
+                <button type="submit" class="btn-salvar-senha">Alterar Senha</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            if (confirm('Deseja realmente sair?')) {
+                localStorage.removeItem('profissional_logado');
+                window.location.href = '../index.html';
+            }
+        });
+
+        // Carregar dados do perfil
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarDadosPerfilProfissional();
+            carregarAvatarProfissional();
+        });
+
+        function carregarDadosPerfilProfissional() {
+            const nomeProfissional = localStorage.getItem('profissional_nome') || 'Camila Emerim';
+            document.getElementById('nome-profissional').textContent = nomeProfissional;
+            
+            // Carregar outros dados do localStorage se existirem
+            const email = localStorage.getItem('profissional_email');
+            const telefone = localStorage.getItem('profissional_telefone');
+            
+            if (email) {
+                document.getElementById('email-profissional').value = email;
+            }
+            if (telefone) {
+                document.getElementById('telefone-profissional').value = telefone;
+            }
+        }
+
+        function carregarAvatarProfissional() {
+            const avatarDisplay = document.getElementById('avatar-display-profissional');
+            const avatarSalvo = localStorage.getItem('profissional_avatar');
+            
+            if (avatarSalvo) {
+                avatarDisplay.innerHTML = `<img src="${avatarSalvo}" alt="Foto de Perfil" class="perfil-avatar">`;
+            } else {
+                avatarDisplay.innerHTML = `<div class="avatar-placeholder">👤</div>`;
+            }
+        }
+
+        // Upload de avatar
+        document.getElementById('avatar-input-profissional').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const avatarData = e.target.result;
+                    localStorage.setItem('profissional_avatar', avatarData);
+                    carregarAvatarProfissional();
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Funções do modal de senha
+        function abrirModalSenhaProfissional() {
+            document.getElementById('modal-senha-profissional').classList.add('ativo');
+        }
+
+        function fecharModalSenhaProfissional() {
+            document.getElementById('modal-senha-profissional').classList.remove('ativo');
+            document.getElementById('form-alterar-senha-profissional').reset();
+        }
+
+        // Fechar modal clicando fora
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('modal-senha-profissional');
+            if (event.target === modal) {
+                fecharModalSenhaProfissional();
+            }
+        });
+
+        // Validação e alteração de senha
+        document.getElementById('form-alterar-senha-profissional').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const senhaAtual = document.getElementById('senha-atual-prof').value;
+            const novaSenha = document.getElementById('nova-senha-prof').value;
+            const confirmarSenha = document.getElementById('confirmar-senha-prof').value;
+            const senhaArmazenada = localStorage.getItem('profissional_senha') || 'admin123';
+            
+            // Validar senha atual
+            if (senhaAtual !== senhaArmazenada) {
+                alert('Senha atual incorreta!');
+                return;
+            }
+            
+            // Validar se as senhas coincidem
+            if (novaSenha !== confirmarSenha) {
+                alert('As senhas não coincidem!');
+                return;
+            }
+            
+            // Validar requisitos da senha
+            if (!validarSenhaProfissional(novaSenha)) {
+                alert('A nova senha não atende aos requisitos de segurança!');
+                return;
+            }
+            
+            // Salvar nova senha
+            localStorage.setItem('profissional_senha', novaSenha);
+            alert('Senha alterada com sucesso!');
+            fecharModalSenhaProfissional();
+        });
+
+        function validarSenhaProfissional(senha) {
+            const minLength = senha.length >= 8;
+            const hasUpper = /[A-Z]/.test(senha);
+            const hasLower = /[a-z]/.test(senha);
+            const hasNumber = /\d/.test(senha);
+            const hasSpecial = /[!@#$%^&*]/.test(senha);
+            
+            return minLength && hasUpper && hasLower && hasNumber && hasSpecial;
+        }
+
+        // Salvamento do formulário de perfil
+        document.getElementById('form-perfil-profissional').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Salvar dados no localStorage
+            localStorage.setItem('profissional_nome', document.getElementById('nome-completo').value);
+            localStorage.setItem('profissional_email', document.getElementById('email-profissional').value);
+            localStorage.setItem('profissional_telefone', document.getElementById('telefone-profissional').value);
+            localStorage.setItem('profissional_especialidade', document.getElementById('especialidade').value);
+            localStorage.setItem('profissional_registro', document.getElementById('registro-profissional').value);
+            
+            alert('Dados do perfil salvos com sucesso!');
+            
+            // Atualizar nome no header
+            document.getElementById('nome-profissional').textContent = document.getElementById('nome-completo').value;
+        });
+    </script>
+</body>
+</html>

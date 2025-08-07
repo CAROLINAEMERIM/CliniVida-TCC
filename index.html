@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CliniVida - Início</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/home.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -22,20 +23,20 @@
         <li><a href="#contato">CONTATO</a></li>
         <li class="login"><a href="#" id="abrir-login">LOGIN</a></li>
         <li class="cadastre-se"><a href="#" id="abrir-cadastro">CADASTRE-SE</a></li>
+        <li class="login"><a href="profissional/index.html">ÁREA PROFISSIONAL</a></li>
       </ul>
     </nav>
   </header>
   <main>
     <!--Seção para o home da página-->
 <section>
-  <h1>
-    CliniVida
-  </h1>
-  <p class="destaque-home">
-    Bem-vindo ao CliniVida! Aqui você encontra um espaço dedicado ao seu bem-estar, onde pode agendar consultas com nutricionistas e personal trainers de forma fácil e rápida. Escolha o plano que mais combina com você e comece hoje mesmo a cuidar da sua saúde com praticidade e confiança.
-  </p>
-  <div style="text-align: center;">
-    <a href="pages/agendamentos.html" class="botao-bolinha">AGENDAR</a>
+  <div class="welcome-card">
+    <p class="destaque-home">
+      Bem-vindo ao CliniVida! Aqui você encontra um espaço dedicado ao seu bem-estar, onde pode agendar consultas com nutricionistas e personal trainers de forma fácil e rápida. Escolha o plano que mais combina com você e comece hoje mesmo a cuidar da sua saúde com praticidade e confiança.
+    </p>
+    <div style="text-align: center;">
+      <a href="pages/agendamentos.html" class="botao-bolinha">AGENDAR</a>
+    </div>
   </div>
 </section>
 
@@ -55,8 +56,10 @@
 
     <!--Seção para os profissionais da página-->
     <section>
-  <h3 id="profissionais">Conheça nossos profissionais!</h3>
-  <h6>Especialistas dedicados a cuidar da sua saúde e bem-estar</h6>
+  <div style="display: flex; flex-direction: column; width: 100%; align-items: center; justify-content: center; text-align: center;">
+    <h3 id="profissionais">Conheça nossos profissionais!</h3>
+    <h6>Especialistas dedicados a cuidar da sua saúde e bem-estar</h6>
+  </div>
 
   <div class="imagens-centrais">
   <div class="imagem-com-caixa">
@@ -74,7 +77,9 @@
 
     <!--Seção para os planos da página-->
     <section>
-<h3 id="planos">Escolha o melhor plano para você!</h3>
+<div style="display: flex; flex-direction: column; width: 100%; align-items: center; justify-content: center; text-align: center;">
+  <h3 id="planos">Escolha o melhor plano para você!</h3>
+</div>
 
 <!--Plano 1-->
 <div class="planos-container">
@@ -110,7 +115,7 @@
   </div>
 
   <!--Plano 3-->
-  <div class="plano-card mescla">
+  <div class="plano-card roxo">
     <span class="etiqueta-desconto">+ desconto</span>
     <div class="plano-info">MENSAL</div>
     <div class="plano-info valor-plano">R$ 420,00</div>
@@ -161,7 +166,7 @@
   </div>
 
   <!--Plano 6-->
-  <div class="plano-card mescla">
+  <div class="plano-card roxo">
     <span class="etiqueta-desconto">+ desconto</span>
     <div class="plano-info">MENSAL</div>
     <div class="plano-info valor-plano">R$ 980,00</div>
@@ -196,7 +201,7 @@
   </div>
 
   <!--Plano 8-->
-  <div class="plano-card mescla">
+  <div class="plano-card roxo">
     <span class="etiqueta-desconto">+ desconto</span>
     <div class="plano-info">MENSAL</div>
     <div class="plano-info valor-plano">R$ 1.390,00</div>
@@ -216,7 +221,7 @@
 
     <!--Seção para o contato da página-->
 <section>
-  <div id="contato" class="container-contato-tabela">
+  <div id="contato" class="contato-section">
     <div class="contato-lateral">
       <div class="contato-textos">
         <h3 class="duvidas-titulo">Ficou com dúvidas?</h3>
@@ -226,19 +231,21 @@
         </span>
       </div>
     </div>
-    <form class="formulario-contato">
-      <fieldset>
-        <legend>Formulário de Contato</legend>
-        <p>Preencha o formulário abaixo e entraremos em contato o mais breve possível.</p>
-        <div class="campo-contato">
-          <input type="text" placeholder="Nome:" required><br>
-          <input type="email" placeholder="E-mail:" required><br><br>
-          <textarea placeholder="Mensagem:" required rows="5" cols="50"></textarea>
-          <button type="submit" class="botao-bolinha enviar-botao">enviar</button>
-        </div>
-      </fieldset>
-    </form>
-  </div> <!-- FECHANDO container-contato-tabela -->
+    <div class="container-contato-tabela">
+      <form class="formulario-contato">
+        <fieldset>
+          <legend>Formulário de Contato</legend>
+          <p>Preencha o formulário abaixo e entraremos em contato o mais breve possível.</p>
+          <div class="campo-contato">
+            <input type="text" placeholder="Nome:" required>
+            <input type="email" placeholder="E-mail:" required>
+            <textarea placeholder="Mensagem:" required rows="5" cols="50"></textarea>
+            <button type="submit" class="botao-bolinha enviar-botao">enviar</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
 </section>
   </main>
 
@@ -264,9 +271,11 @@
     </div>
     <div class="rodape-redes">
       <h5>Redes Sociais</h5>
-      <a href="#"><img src="assets/icone-instagram.png" alt="Instagram"></a>
-      <a href="#"><img src="assets/icone-facebook.png" alt="Facebook"></a>
-      <a href="#"><img src="assets/icone-whatsapp.png" alt="WhatsApp"></a>
+      <div style="display: flex; gap: 10px;">
+        <a href="#"><img src="assets/icone-instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="assets/icone-facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="assets/icone-whatsapp.png" alt="WhatsApp"></a>
+      </div>
     </div>
   </div>
   <div class="rodape-copy">

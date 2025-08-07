@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suporte - CliniVida</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/paciente.css">
 </head>
 <body class="paciente-page">
 
@@ -19,7 +21,8 @@
                 <li><a href="historico.html">HISTÓRICO CLÍNICO</a></li>
                 <li><a href="plano.html">PLANOS E COBERTURAS</a></li>
                 <li><a href="perfil.html">MEU PERFIL</a></li>
-                <li><a href="ajuda.html" class="active">SUPORTE</a></li> <li><a href="../index.html" id="sair">SAIR</a></li>
+                <li><a href="ajuda.html" class="ativo">SUPORTE</a></li>
+                <li><a href="../index.html" id="sair">SAIR</a></li>
             </ul>
         </nav>
     </header>
@@ -27,46 +30,61 @@
     <main class="main-content-wrapper ajuda-page-wrapper">
         <div class="ajuda-header">
             <h1>Faça sua pergunta ou veja as mais frequentes abaixo:</h1>
+            <p>Encontre respostas rápidas para suas dúvidas ou entre em contato conosco para suporte personalizado.</p>
         </div>
 
         <div class="search-faq-container">
             <input type="text" id="faqSearch" placeholder="Pesquise aqui sua dúvida">
-            <button class="search-faq-button"><img src="../assets/icone-lupa.png" alt="Pesquisar"></button>
-            </div>
+            <button class="search-faq-button">🔍 Pesquisar</button>
+        </div>
 
         <div class="faq-list">
             <div class="faq-item">
                 <button class="faq-question">COMO AGENDAR UMA CONSULTA NUTRICIONAL?</button>
                 <div class="faq-answer">
-                    Para agendar uma consulta nutricional, navegue até a seção "Agendamentos", selecione a opção de Nutricionista, escolha a data e horário disponíveis de sua preferência e confirme.
+                    <p>Para agendar uma consulta nutricional, navegue até a seção "Agendamentos", selecione a opção de Nutricionista, escolha a data e horário disponíveis de sua preferência e confirme.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question">COMO AGENDAR UMA CONSULTA COM O PERSONAL TRAINER?</button>
                 <div class="faq-answer">
-                    Similarmente, para agendar uma sessão com um Personal Trainer, acesse "Agendamentos", selecione "Personal Trainer", defina o dia e a hora e finalize o agendamento.
+                    <p>Similarmente, para agendar uma sessão com um Personal Trainer, acesse "Agendamentos", selecione "Personal Trainer", defina o dia e a hora e finalize o agendamento.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question">O QUE FAÇO SE PRECISAR CANCELAR OU REAGENDAR UMA CONSULTA?</button>
                 <div class="faq-answer">
-                    Você pode cancelar ou reagendar suas consultas diretamente pela seção "Agendamentos". Encontre o agendamento desejado e utilize as opções disponíveis. Lembre-se de verificar a política de cancelamento.
+                    <p>Você pode cancelar ou reagendar suas consultas diretamente pela seção "Agendamentos". Encontre o agendamento desejado e utilize as opções disponíveis. Lembre-se de verificar a política de cancelamento.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question">COMO VEJO MEU HISTÓRICO DE CONSULTAS?</button>
                 <div class="faq-answer">
-                    Seu histórico completo de consultas, exames e prescrições está disponível na seção "Histórico Clínico". Você pode filtrar por período para encontrar informações específicas.
+                    <p>Seu histórico completo de consultas, exames e prescrições está disponível na seção "Histórico Clínico". Você pode filtrar por período para encontrar informações específicas.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question">MEU PLANO TEM ALGUM BENEFÍCIO ADICIONAL?</button>
                 <div class="faq-answer">
-                    Sim! Para consultar todos os detalhes, coberturas e benefícios do seu plano, acesse a seção "Planos e Coberturas". Lá você encontrará todas as informações sobre o seu pacote e vantagens.
+                    <p>Sim! Para consultar todos os detalhes, coberturas e benefícios do seu plano, acesse a seção "Planos e Coberturas". Lá você encontrará todas as informações sobre o seu pacote e vantagens.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">COMO ALTERO MEUS DADOS PESSOAIS?</button>
+                <div class="faq-answer">
+                    <p>Você pode atualizar seus dados pessoais na seção "Meu Perfil". Lá é possível alterar informações como nome, telefone, data de nascimento e foto de perfil. Também é possível alterar sua senha de acesso.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">POSSO TROCAR DE PLANO A QUALQUER MOMENTO?</button>
+                <div class="faq-answer">
+                    <p>Sim! Você pode alterar seu plano a qualquer momento através da seção "Planos e Coberturas". Escolha o plano que melhor se adequa às suas necessidades e confirme a alteração. As mudanças entram em vigor no próximo ciclo de cobrança.</p>
                 </div>
             </div>
         </div>
@@ -95,9 +113,11 @@
             </div>
             <div class="rodape-redes">
                 <h5>Redes Sociais</h5>
-                <a href="#"><img src="../assets/icone-instagram.png" alt="Instagram"></a>
-                <a href="#"><img src="../assets/icone-facebook.png" alt="Facebook"></a>
-                <a href="#"><img src="../assets/icone-whatsapp.png" alt="WhatsApp"></a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="#"><img src="assets/icone-instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="assets/icone-facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="assets/icone-whatsapp.png" alt="WhatsApp"></a>
+                </div>
             </div>
         </div>
         <div class="rodape-copy">

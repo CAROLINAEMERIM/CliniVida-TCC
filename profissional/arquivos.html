@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquivos Compartilhados - CliniVida</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/profissional.css">
+</head>
+<body class="profissional-page">
+    <header class="header-profissional">
+        <div class="header-left">
+            <img src="../assets/logo.png" alt="Logo CliniVida" class="logo-profissional">
+            <h2 class="nome-profissional">Dr(a). <span id="nome-profissional">Camila Emerim</span></h2>
+        </div>
+        <button class="btn-logout" id="logout-btn">Sair</button>
+    </header>
+
+    <div class="layout-profissional">
+        <aside class="sidebar-profissional">
+            <nav class="nav-profissional">
+                <ul>
+                    <li><a href="index.html" class="nav-item">📊 Dashboard</a></li>
+                    <li><a href="consultas.html" class="nav-item">📅 Consultas Agendadas</a></li>
+                    <li><a href="historico.html" class="nav-item">📋 Histórico de Consultas</a></li>
+                    <li><a href="pacientes.html" class="nav-item">👥 Pacientes</a></li>
+                    <li><a href="arquivos.html" class="nav-item active">📎 Arquivos Compartilhados</a></li>
+                    <li><a href="perfil.html" class="nav-item">👤 Meu Perfil</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-profissional">
+            <div class="page-header">
+                <h1>Arquivos Compartilhados</h1>
+                <p>Gerencie e compartilhe arquivos com seus pacientes</p>
+            </div>
+
+            <div class="upload-section">
+                <div class="upload-card">
+                    <h3>Compartilhar Novo Arquivo</h3>
+                    <form class="upload-form" id="upload-form">
+                        <div class="form-group">
+                            <label for="arquivo">Selecionar Arquivo:</label>
+                            <input type="file" id="arquivo" name="arquivo" accept=".pdf,.doc,.docx,.jpg,.png" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="destinatario">Destinatário:</label>
+                            <select id="destinatario" name="destinatario" required>
+                                <option value="">Selecione um paciente</option>
+                                <option value="ana-costa">Ana Costa</option>
+                                <option value="carlos-lima">Carlos Lima</option>
+                                <option value="maria-silva">Maria Silva</option>
+                                <option value="joao-santos">João Santos</option>
+                                <option value="pedro-oliveira">Pedro Oliveira</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipo-arquivo">Tipo de Arquivo:</label>
+                            <select id="tipo-arquivo" name="tipo-arquivo" required>
+                                <option value="">Selecione o tipo</option>
+                                <option value="plano-nutricional">Plano Nutricional</option>
+                                <option value="plano-treino">Plano de Treino</option>
+                                <option value="relatorio">Relatório</option>
+                                <option value="receita">Receita</option>
+                                <option value="exame">Exame</option>
+                                <option value="outros">Outros</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="descricao">Descrição:</label>
+                            <textarea id="descricao" name="descricao" placeholder="Descreva o conteúdo do arquivo..." rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primario">Enviar Arquivo</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="arquivos-section">
+                <div class="section-header">
+                    <h2>📁 Arquivos Enviados</h2>
+                    <div class="filtros-arquivos">
+                        <select id="filtro-paciente" class="input-filtro">
+                            <option value="">Todos os pacientes</option>
+                            <option value="ana-costa">Ana Costa</option>
+                            <option value="carlos-lima">Carlos Lima</option>
+                            <option value="maria-silva">Maria Silva</option>
+                            <option value="joao-santos">João Santos</option>
+                        </select>
+                        <select id="filtro-tipo" class="input-filtro">
+                            <option value="">Todos os tipos</option>
+                            <option value="plano-nutricional">Plano Nutricional</option>
+                            <option value="plano-treino">Plano de Treino</option>
+                            <option value="relatorio">Relatório</option>
+                            <option value="receita">Receita</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="arquivos-lista">
+                    <div class="arquivo-item" data-paciente="ana-costa" data-tipo="plano-nutricional">
+                        <div class="arquivo-icon">📄</div>
+                        <div class="arquivo-info">
+                            <h4>Plano Alimentar - Janeiro 2025</h4>
+                            <p><strong>Paciente:</strong> Ana Costa</p>
+                            <p><strong>Tipo:</strong> Plano Nutricional</p>
+                            <p><strong>Enviado em:</strong> 08/01/2025</p>
+                            <p><strong>Descrição:</strong> Plano alimentar personalizado com foco em reeducação alimentar</p>
+                        </div>
+                        <div class="arquivo-acoes">
+                            <button class="btn-mini">Baixar</button>
+                            <button class="btn-mini-danger">Excluir</button>
+                        </div>
+                    </div>
+
+                    <div class="arquivo-item" data-paciente="carlos-lima" data-tipo="relatorio">
+                        <div class="arquivo-icon">📊</div>
+                        <div class="arquivo-info">
+                            <h4>Relatório Nutricional - Dezembro</h4>
+                            <p><strong>Paciente:</strong> Carlos Lima</p>
+                            <p><strong>Tipo:</strong> Relatório</p>
+                            <p><strong>Enviado em:</strong> 15/12/2024</p>
+                            <p><strong>Descrição:</strong> Relatório de progresso e recomendações</p>
+                        </div>
+                        <div class="arquivo-acoes">
+                            <button class="btn-mini">Baixar</button>
+                            <button class="btn-mini-danger">Excluir</button>
+                        </div>
+                    </div>
+
+                    <div class="arquivo-item" data-paciente="maria-silva" data-tipo="receita">
+                        <div class="arquivo-icon">🍽️</div>
+                        <div class="arquivo-info">
+                            <h4>Receitas Saudáveis</h4>
+                            <p><strong>Paciente:</strong> Maria Silva</p>
+                            <p><strong>Tipo:</strong> Receita</p>
+                            <p><strong>Enviado em:</strong> 10/12/2024</p>
+                            <p><strong>Descrição:</strong> Coletânea de receitas práticas e nutritivas</p>
+                        </div>
+                        <div class="arquivo-acoes">
+                            <button class="btn-mini">Baixar</button>
+                            <button class="btn-mini-danger">Excluir</button>
+                        </div>
+                    </div>
+
+                    <div class="arquivo-item" data-paciente="joao-santos" data-tipo="plano-nutricional">
+                        <div class="arquivo-icon">📄</div>
+                        <div class="arquivo-info">
+                            <h4>Plano de Emagrecimento</h4>
+                            <p><strong>Paciente:</strong> João Santos</p>
+                            <p><strong>Tipo:</strong> Plano Nutricional</p>
+                            <p><strong>Enviado em:</strong> 05/12/2024</p>
+                            <p><strong>Descrição:</strong> Plano focado em redução de peso saudável</p>
+                        </div>
+                        <div class="arquivo-acoes">
+                            <button class="btn-mini">Baixar</button>
+                            <button class="btn-mini-danger">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            if (confirm('Deseja realmente sair?')) {
+                localStorage.removeItem('profissional_logado');
+                window.location.href = '../index.html';
+            }
+        });
+
+        // Carregar nome do profissional
+        document.addEventListener('DOMContentLoaded', function() {
+            const nomeProfissional = localStorage.getItem('profissional_nome') || 'Profissional';
+            document.getElementById('nome-profissional').textContent = nomeProfissional;
+        });
+
+        // Upload de arquivo
+        document.getElementById('upload-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const arquivo = document.getElementById('arquivo').files[0];
+            const destinatario = document.getElementById('destinatario').value;
+            const tipoArquivo = document.getElementById('tipo-arquivo').value;
+            const descricao = document.getElementById('descricao').value;
+            
+            if (!arquivo || !destinatario || !tipoArquivo) {
+                alert('Por favor, preencha todos os campos obrigatórios');
+                return;
+            }
+            
+            // Simular upload
+            alert(`Arquivo "${arquivo.name}" enviado com sucesso para ${destinatario}!`);
+            
+            // Limpar formulário
+            this.reset();
+            
+            // Aqui você implementaria a lógica real de upload
+            // Por exemplo, usando FormData e fetch para enviar ao servidor
+        });
+
+        // Filtros
+        document.getElementById('filtro-paciente').addEventListener('change', aplicarFiltros);
+        document.getElementById('filtro-tipo').addEventListener('change', aplicarFiltros);
+
+        function aplicarFiltros() {
+            const filtroPaciente = document.getElementById('filtro-paciente').value;
+            const filtroTipo = document.getElementById('filtro-tipo').value;
+            
+            const arquivos = document.querySelectorAll('.arquivo-item');
+            
+            arquivos.forEach(arquivo => {
+                const paciente = arquivo.dataset.paciente;
+                const tipo = arquivo.dataset.tipo;
+                
+                let mostrar = true;
+                
+                if (filtroPaciente && paciente !== filtroPaciente) {
+                    mostrar = false;
+                }
+                
+                if (filtroTipo && tipo !== filtroTipo) {
+                    mostrar = false;
+                }
+                
+                arquivo.style.display = mostrar ? 'block' : 'none';
+            });
+        }
+
+        // Ações dos arquivos
+        document.addEventListener('click', function(e) {
+            if (e.target.textContent.includes('Excluir')) {
+                if (confirm('Deseja realmente excluir este arquivo?')) {
+                    e.target.closest('.arquivo-item').remove();
+                    alert('Arquivo excluído com sucesso!');
+                }
+            } else if (e.target.textContent.includes('Baixar')) {
+                alert('Download iniciado! (Funcionalidade simulada)');
+            } else if (e.target.textContent.includes('Visualizar')) {
+                alert('Abrindo visualização do arquivo... (Funcionalidade simulada)');
+            }
+        });
+    </script>
+</body>
+</html>

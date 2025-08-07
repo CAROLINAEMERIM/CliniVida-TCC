@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Profissional - CliniVida</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/profissional.css">
+</head>
+<body class="profissional-page">
+    <header class="header-profissional">
+        <div class="header-left">
+            <img src="../assets/logo.png" alt="Logo CliniVida" class="logo-profissional">
+            <h2 class="nome-profissional">Dr(a). <span id="nome-profissional">Camila Emerim</span></h2>
+        </div>
+        <button class="btn-logout" id="logout-btn">Sair</button>
+    </header>
+
+    <div class="layout-profissional">
+        <aside class="sidebar-profissional">
+            <nav class="nav-profissional">
+                <ul>
+                    <li><a href="index.html" class="nav-item active">📊 Dashboard</a></li>
+                    <li><a href="consultas.html" class="nav-item">📅 Consultas Agendadas</a></li>
+                    <li><a href="historico.html" class="nav-item">📋 Histórico de Consultas</a></li>
+                    <li><a href="pacientes.html" class="nav-item">👥 Pacientes</a></li>
+                    <li><a href="arquivos.html" class="nav-item">📎 Arquivos Compartilhados</a></li>
+                    <li><a href="perfil.html" class="nav-item">👤 Meu Perfil</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-profissional">
+            <div class="dashboard-header">
+                <h1>Dashboard</h1>
+                <p>Bem-vindo(a) ao seu painel de controle profissional</p>
+            </div>
+
+            <div class="dashboard-cards">
+                <div class="dashboard-card proxima-consulta">
+                    <h3>🕐 Próxima Consulta</h3>
+                    <div class="consulta-info">
+                        <p class="data-hora">Hoje, 14:30</p>
+                        <p class="paciente-nome">Maria Silva</p>
+                        <p class="tipo-consulta">Consulta Nutricional</p>
+                    </div>
+                    <button class="btn btn-detalhes" onclick="abrirDetalhesConsulta('maria-silva')">Ver Detalhes</button>
+                </div>
+
+                <div class="dashboard-card ultimo-arquivo">
+                    <h3>📎 Último Arquivo Enviado</h3>
+                    <div class="plano-info">
+                        <p class="plano-nome">Plano Alimentar - Ana Costa</p>
+                        <p class="plano-data">Enviado em 08/01/2025</p>
+                    </div>
+                    <button class="btn btn-secundario">Baixar</button>
+                </div>
+            </div>
+
+            <div class="agenda-rapida">
+                <h2>📅 Agenda de Hoje</h2>
+                <div class="agenda-lista">
+                    <div class="agenda-item">
+                        <div class="horario">09:00</div>
+                        <div class="paciente">Ana Costa - Consulta Inicial</div>
+                        <button class="btn-mini" onclick="abrirDetalhesConsulta('ana-costa')">Detalhes</button>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="horario">10:30</div>
+                        <div class="paciente">Carlos Lima - Retorno</div>
+                        <button class="btn-mini" onclick="abrirDetalhesConsulta('carlos-lima')">Detalhes</button>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="horario">14:30</div>
+                        <div class="paciente">Maria Silva - Consulta Nutricional</div>
+                        <button class="btn-mini" onclick="abrirDetalhesConsulta('maria-silva')">Detalhes</button>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="horario">16:00</div>
+                        <div class="paciente">Pedro Oliveira - Avaliação</div>
+                        <button class="btn-mini" onclick="abrirDetalhesConsulta('pedro-oliveira')">Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="modal-detalhes-consulta" class="modal-profissional">
+        <div class="modal-conteudo-profissional">
+            <button class="modal-fechar" onclick="fecharModal('modal-detalhes-consulta')">&times;</button>
+            <h2>Detalhes da Consulta</h2>
+            <div id="detalhes-consulta-conteudo">
+                <!-- Conteúdo será preenchido via JavaScript -->
+            </div>
+            <div class="modal-acoes">
+                <button class="btn btn-primario">Adicionar Plano Nutricional</button>
+                <button class="btn btn-secundario">Compartilhar Arquivo</button>
+                <button class="btn btn-terciario">Ver Ficha do Paciente</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            if (confirm('Deseja realmente sair?')) {
+                localStorage.removeItem('profissional_logado');
+                window.location.href = '../index.html';
+            }
+        });
+
+        // Carregar nome do profissional
+        document.addEventListener('DOMContentLoaded', function() {
+            const nomeProfissional = localStorage.getItem('profissional_nome') || 'Profissional';
+            document.getElementById('nome-profissional').textContent = nomeProfissional;
+        });
+
+        function abrirDetalhesConsulta(pacienteId) {
+            const modal = document.getElementById('modal-detalhes-consulta');
+            const conteudo = document.getElementById('detalhes-consulta-conteudo');
+            
+            // Dados simulados baseados no ID do paciente
+            const dadosConsulta = {
+                'ana-costa': {
+                    nome: 'Ana Costa',
+                    data: '20/01/2025',
+                    hora: '09:00',
+                    tipo: 'Consulta Inicial - Nutrição',
+                    telefone: '(11) 99999-9999',
+                    observacoes: 'Primeira consulta. Paciente busca reeducação alimentar.'
+                },
+                'carlos-lima': {
+                    nome: 'Carlos Lima',
+                    data: '20/01/2025',
+                    hora: '10:30',
+                    tipo: 'Consulta de Retorno - Nutrição',
+                    telefone: '(11) 88888-8888',
+                    observacoes: 'Retorno para avaliação do plano alimentar.'
+                },
+                'maria-silva': {
+                    nome: 'Maria Silva',
+                    data: '20/01/2025',
+                    hora: '14:30',
+                    tipo: 'Consulta Nutricional',
+                    telefone: '(11) 77777-7777',
+                    observacoes: 'Consulta de acompanhamento nutricional.'
+                }
+            };
+
+            const dados = dadosConsulta[pacienteId];
+            
+            conteudo.innerHTML = `
+                <div class="detalhes-grid">
+                    <div class="detalhe-item">
+                        <strong>Paciente:</strong> ${dados.nome}
+                    </div>
+                    <div class="detalhe-item">
+                        <strong>Data:</strong> ${dados.data}
+                    </div>
+                    <div class="detalhe-item">
+                        <strong>Horário:</strong> ${dados.hora}
+                    </div>
+                    <div class="detalhe-item">
+                        <strong>Tipo:</strong> ${dados.tipo}
+                    </div>
+                    <div class="detalhe-item">
+                        <strong>Telefone:</strong> ${dados.telefone}
+                    </div>
+                    <div class="detalhe-item observacoes">
+                        <strong>Observações:</strong><br>
+                        ${dados.observacoes}
+                    </div>
+                </div>
+            `;
+            
+            modal.style.display = 'flex';
+        }
+
+        // Função para fechar modal
+        function fecharModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Fechar modal clicando fora
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal-detalhes-consulta');
+            if (event.target === modal) {
+                fecharModal('modal-detalhes-consulta');
+            }
+        }
+    </script>
+</body>
+</html>

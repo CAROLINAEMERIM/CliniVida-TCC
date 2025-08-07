@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacientes - CliniVida</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/profissional.css">
+</head>
+<body class="profissional-page">
+    <header class="header-profissional">
+        <div class="header-left">
+            <img src="../assets/logo.png" alt="Logo CliniVida" class="logo-profissional">
+            <h2 class="nome-profissional">Dr(a). <span id="nome-profissional">Camila Emerim</span></h2>
+        </div>
+        <button class="btn-logout" id="logout-btn">Sair</button>
+    </header>
+
+    <div class="layout-profissional">
+        <aside class="sidebar-profissional">
+            <nav class="nav-profissional">
+                <ul>
+                    <li><a href="index.html" class="nav-item">📊 Dashboard</a></li>
+                    <li><a href="consultas.html" class="nav-item">📅 Consultas Agendadas</a></li>
+                    <li><a href="historico.html" class="nav-item">📋 Histórico de Consultas</a></li>
+                    <li><a href="pacientes.html" class="nav-item active">👥 Pacientes</a></li>
+                    <li><a href="arquivos.html" class="nav-item">📎 Arquivos Compartilhados</a></li>
+                    <li><a href="perfil.html" class="nav-item">👤 Meu Perfil</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-profissional">
+            <div class="page-header">
+                <h1>Meus Pacientes</h1>
+                <p>Gerencie e acompanhe todos os seus pacientes</p>
+            </div>
+
+            <div class="filtros-pacientes">
+                <div class="filtro-grupo">
+                    <label for="buscar-nome">Buscar por nome:</label>
+                    <input type="text" id="buscar-nome" placeholder="Digite o nome do paciente" class="input-filtro">
+                </div>
+                <div class="filtro-grupo">
+                    <label for="filtro-status">Status:</label>
+                    <select id="filtro-status" class="input-filtro">
+                        <option value="">Todos</option>
+                        <option value="ativo">Ativo</option>
+                        <option value="inativo">Inativo</option>
+                    </select>
+                </div>
+                <button class="btn btn-filtrar">Filtrar</button>
+            </div>
+
+            <div class="pacientes-table-container">
+                <table class="pacientes-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Telefone</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-status="ativo">
+                            <td>Ana Costa</td>
+                            <td>ana.costa@email.com</td>
+                            <td>(11) 99999-9999</td>
+                            <td>
+                                <div class="acoes-tabela">
+                                    <button class="btn-mini" onclick="verFichaPaciente('ana-costa')">Ver Ficha</button>
+                                    <button class="btn-mini btn-secundario" onclick="abrirModalAgendamento('Ana Costa')">Nova Consulta</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-status="ativo">
+                            <td>Carlos Lima</td>
+                            <td>carlos.lima@email.com</td>
+                            <td>(11) 88888-8888</td>
+                            <td>
+                                <div class="acoes-tabela">
+                                    <button class="btn-mini" onclick="verFichaPaciente('carlos-lima')">Ver Ficha</button>
+                                    <button class="btn-mini btn-secundario" onclick="abrirModalAgendamento('Carlos Lima')">Nova Consulta</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-status="ativo">
+                            <td>Maria Silva</td>
+                            <td>maria.silva@email.com</td>
+                            <td>(11) 77777-7777</td>
+                            <td>
+                                <div class="acoes-tabela">
+                                    <button class="btn-mini" onclick="verFichaPaciente('maria-silva')">Ver Ficha</button>
+                                    <button class="btn-mini btn-secundario" onclick="abrirModalAgendamento('Maria Silva')">Nova Consulta</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-status="ativo">
+                            <td>João Santos</td>
+                            <td>joao.santos@email.com</td>
+                            <td>(11) 66666-6666</td>
+                            <td>
+                                <div class="acoes-tabela">
+                                    <button class="btn-mini" onclick="verFichaPaciente('joao-santos')">Ver Ficha</button>
+                                    <button class="btn-mini btn-secundario" onclick="abrirModalAgendamento('João Santos')">Nova Consulta</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-status="inativo">
+                            <td>Pedro Oliveira</td>
+                            <td>pedro.oliveira@email.com</td>
+                            <td>(11) 55555-5555</td>
+                            <td>
+                                <div class="acoes-tabela">
+                                    <button class="btn-mini" onclick="verFichaPaciente('pedro-oliveira')">Ver Ficha</button>
+                                    <button class="btn-mini btn-secundario" onclick="abrirModalAgendamento('Pedro Oliveira')">Nova Consulta</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-status="ativo">
+                            <td>Lucia Fernandes</td>
+                            <td>lucia.fernandes@email.com</td>
+                            <td>(11) 44444-4444</td>
+                            <td>
+                                <div class="acoes-tabela">
+                                    <button class="btn-mini" onclick="verFichaPaciente('lucia-fernandes')">Ver Ficha</button>
+                                    <button class="btn-mini btn-secundario" onclick="abrirModalAgendamento('Lucia Fernandes')">Nova Consulta</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <div id="modal-agendamento" class="modal-profissional" style="display: none;">
+        <div class="modal-conteudo-profissional">
+            <button class="modal-fechar" onclick="fecharModalAgendamento()">&times;</button>
+            <h2>Agendar Nova Consulta</h2>
+            <p>Selecione a data e horário para a consulta de <strong id="nome-paciente-modal">Ana Costa</strong></p>
+            
+            <div class="agendamento-steps">
+                <!-- Etapa 1: Seleção de Data -->
+                <div id="etapa-data-modal" class="agenda-step-modal active">
+                    <h3>Escolha a Data</h3>
+                    <div class="calendar-nav">
+                        <span id="prevMonth-modal" class="arrow-nav">‹</span>
+                        <span id="month-year-modal">Janeiro 2025</span>
+                        <span id="nextMonth-modal" class="arrow-nav">›</span>
+                    </div>
+                    <table class="calendar-modal">
+                        <thead>
+                            <tr>
+                                <th>Dom</th>
+                                <th>Seg</th>
+                                <th>Ter</th>
+                                <th>Qua</th>
+                                <th>Qui</th>
+                                <th>Sex</th>
+                                <th>Sab</th>
+                            </tr>
+                        </thead>
+                        <tbody id="calendar-days-modal"></tbody>
+                    </table>
+                    <div class="modal-acoes">
+                        <button class="btn btn-primario" onclick="proximaEtapaModal()" id="btn-proxima-data" disabled>Próximo</button>
+                    </div>
+                </div>
+
+                <!-- Etapa 2: Seleção de Horário -->
+                <div id="etapa-horario-modal" class="agenda-step-modal" style="display: none;">
+                    <h3>Escolha o Horário</h3>
+                    <p class="data-selecionada-modal">Data selecionada aparecerá aqui</p>
+                    <div class="horarios-grid-modal">
+                        <button class="horario-btn-modal">08:00</button>
+                        <button class="horario-btn-modal">08:30</button>
+                        <button class="horario-btn-modal">09:00</button>
+                        <button class="horario-btn-modal">09:30</button>
+                        <button class="horario-btn-modal">10:00</button>
+                        <button class="horario-btn-modal">10:30</button>
+                        <button class="horario-btn-modal">11:00</button>
+                        <button class="horario-btn-modal">11:30</button>
+                        <button class="horario-btn-modal">13:00</button>
+                        <button class="horario-btn-modal">13:30</button>
+                        <button class="horario-btn-modal">14:00</button>
+                        <button class="horario-btn-modal">14:30</button>
+                        <button class="horario-btn-modal">15:00</button>
+                        <button class="horario-btn-modal">15:30</button>
+                        <button class="horario-btn-modal">16:00</button>
+                        <button class="horario-btn-modal">16:30</button>
+                        <button class="horario-btn-modal">17:00</button>
+                        <button class="horario-btn-modal">17:30</button>
+                    </div>
+                    <div class="modal-acoes">
+                        <button class="btn btn-secundario" onclick="voltarEtapaModal()">Voltar</button>
+                        <button class="btn btn-primario" onclick="confirmarAgendamento()" id="btn-confirmar-agendamento" disabled>Confirmar Agendamento</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            if (confirm('Deseja realmente sair?')) {
+                localStorage.removeItem('profissional_logado');
+                window.location.href = '../index.html';
+            }
+        });
+
+        // Carregar nome do profissional
+        document.addEventListener('DOMContentLoaded', function() {
+            const nomeProfissional = localStorage.getItem('profissional_nome') || 'Profissional';
+            document.getElementById('nome-profissional').textContent = nomeProfissional;
+        });
+
+        // Função para ver ficha do paciente
+        function verFichaPaciente(pacienteId) {
+            // Redireciona para a página de ficha do paciente
+            window.location.href = `ficha-paciente.html?id=${pacienteId}`;
+        }
+
+        // Filtros de busca
+        document.querySelector('.btn-filtrar').addEventListener('click', function() {
+            const buscarNome = document.getElementById('buscar-nome').value.toLowerCase();
+            const filtroStatus = document.getElementById('filtro-status').value;
+            
+            const pacienteRows = document.querySelectorAll('.pacientes-table tbody tr');
+            
+            pacienteRows.forEach(row => {
+                const nome = row.cells[0].textContent.toLowerCase();
+                const status = row.dataset.status;
+                
+                let mostrar = true;
+                
+                if (buscarNome && !nome.includes(buscarNome)) {
+                    mostrar = false;
+                }
+                
+                if (filtroStatus && status !== filtroStatus) {
+                    mostrar = false;
+                }
+                
+                row.style.display = mostrar ? 'table-row' : 'none';
+            });
+        });
+
+        // Busca em tempo real
+        document.getElementById('buscar-nome').addEventListener('input', function() {
+            document.querySelector('.btn-filtrar').click();
+        });
+
+        let selectedDateModal = null;
+        let selectedTimeModal = null;
+        let currentMonthModal = new Date().getMonth();
+        let currentYearModal = new Date().getFullYear();
+
+        function abrirModalAgendamento(nomePaciente) {
+            document.getElementById('modal-agendamento').style.display = 'flex';
+            document.getElementById('nome-paciente-modal').textContent = nomePaciente;
+            renderCalendarModal(currentYearModal, currentMonthModal);
+            resetModalState();
+        }
+
+        // Função para fechar modal de agendamento
+        function fecharModalAgendamento() {
+            document.getElementById('modal-agendamento').style.display = 'none';
+            resetModalState();
+        }
+
+        // Reset do estado do modal
+        function resetModalState() {
+            selectedDateModal = null;
+            selectedTimeModal = null;
+            document.getElementById('etapa-data-modal').style.display = 'block';
+            document.getElementById('etapa-horario-modal').style.display = 'none';
+            document.getElementById('btn-proxima-data').disabled = true;
+            document.getElementById('btn-confirmar-agendamento').disabled = true;
+            
+            // Limpar seleções
+            document.querySelectorAll('.selected-day-modal').forEach(d => d.classList.remove('selected-day-modal'));
+            document.querySelectorAll('.horario-btn-modal.active').forEach(h => h.classList.remove('active'));
+        }
+
+        // Renderizar calendário do modal
+        function renderCalendarModal(year, month) {
+            const calendarDays = document.getElementById('calendar-days-modal');
+            const monthYearDisplay = document.getElementById('month-year-modal');
+            
+            calendarDays.innerHTML = '';
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const numDays = lastDay.getDate();
+            const startDay = firstDay.getDay();
+            
+            monthYearDisplay.textContent = new Date(year, month).toLocaleString('pt-BR', { month: 'long', year: 'numeric' });
+            
+            let currentRow = document.createElement('tr');
+            let dayCount = 0;
+            
+            // Adicionar células vazias no início
+            for (let i = 0; i < startDay; i++) {
+                const emptyTd = document.createElement('td');
+                currentRow.appendChild(emptyTd);
+                dayCount++;
+            }
+            
+            // Adicionar os dias do mês
+            for (let day = 1; day <= numDays; day++) {
+                const dayTd = document.createElement('td');
+                dayTd.textContent = day;
+                
+                const currentDate = new Date();
+                const dayDate = new Date(year, month, day);
+                
+                if (dayDate < currentDate.setHours(0,0,0,0)) {
+                    dayTd.classList.add('past-day-modal');
+                } else if (day % 7 === 0 || day % 13 === 0) { // Simular dias indisponíveis
+                    dayTd.classList.add('unavailable-day-modal');
+                } else {
+                    dayTd.classList.add('available-day-modal');
+                    dayTd.addEventListener('click', function() {
+                        // Remove seleção anterior
+                        document.querySelectorAll('.selected-day-modal').forEach(d => d.classList.remove('selected-day-modal'));
+                        this.classList.add('selected-day-modal');
+                        selectedDateModal = dayDate;
+                        document.getElementById('btn-proxima-data').disabled = false;
+                        
+                        // Atualiza a data selecionada para a próxima etapa
+                        const dataSelecionada = document.querySelector('.data-selecionada-modal');
+                        if (dataSelecionada) {
+                            dataSelecionada.textContent = dayDate.toLocaleDateString('pt-BR', { 
+                                weekday: 'long', 
+                                day: 'numeric', 
+                                month: 'long' 
+                            });
+                        }
+                    });
+                }
+                
+                currentRow.appendChild(dayTd);
+                dayCount++;
+                
+                // Se completou uma semana, adiciona a linha e cria uma nova
+                if (dayCount % 7 === 0) {
+                    calendarDays.appendChild(currentRow);
+                    currentRow = document.createElement('tr');
+                }
+            }
+            
+            // Adicionar a última linha se não estiver vazia
+            if (dayCount % 7 !== 0) {
+                while (dayCount % 7 !== 0) {
+                    const emptyTd = document.createElement('td');
+                    currentRow.appendChild(emptyTd);
+                    dayCount++;
+                }
+                calendarDays.appendChild(currentRow);
+            }
+        }
+
+        // Navegação do calendário
+        document.getElementById('prevMonth-modal').addEventListener('click', () => {
+            currentMonthModal--;
+            if (currentMonthModal < 0) {
+                currentMonthModal = 11;
+                currentYearModal--;
+            }
+            renderCalendarModal(currentYearModal, currentMonthModal);
+        });
+
+        document.getElementById('nextMonth-modal').addEventListener('click', () => {
+            currentMonthModal++;
+            if (currentMonthModal > 11) {
+                currentMonthModal = 0;
+                currentYearModal++;
+            }
+            renderCalendarModal(currentYearModal, currentMonthModal);
+        });
+
+        // Próxima etapa (data -> horário)
+        function proximaEtapaModal() {
+            if (selectedDateModal) {
+                document.getElementById('etapa-data-modal').style.display = 'none';
+                document.getElementById('etapa-horario-modal').style.display = 'block';
+                
+                // Simular horários indisponíveis
+                const horariosIndisponiveis = ['09:00', '14:30', '16:00'];
+                document.querySelectorAll('.horario-btn-modal').forEach(btn => {
+                    if (horariosIndisponiveis.includes(btn.textContent)) {
+                        btn.classList.add('unavailable');
+                        btn.disabled = true;
+                    } else {
+                        btn.classList.remove('unavailable');
+                        btn.disabled = false;
+                        btn.addEventListener('click', function() {
+                            if (!this.classList.contains('unavailable')) {
+                                document.querySelectorAll('.horario-btn-modal.active').forEach(b => b.classList.remove('active'));
+                                this.classList.add('active');
+                                selectedTimeModal = this.textContent;
+                                document.getElementById('btn-confirmar-agendamento').disabled = false;
+                            }
+                        });
+                    }
+                });
+            }
+        }
+
+        // Voltar etapa (horário -> data)
+        function voltarEtapaModal() {
+            document.getElementById('etapa-horario-modal').style.display = 'none';
+            document.getElementById('etapa-data-modal').style.display = 'block';
+            selectedTimeModal = null;
+            document.getElementById('btn-confirmar-agendamento').disabled = true;
+            document.querySelectorAll('.horario-btn-modal.active').forEach(h => h.classList.remove('active'));
+        }
+
+        // Confirmar agendamento
+        function confirmarAgendamento() {
+            if (selectedDateModal && selectedTimeModal) {
+                const dataFormatada = selectedDateModal.toLocaleDateString('pt-BR');
+                const nomePaciente = document.getElementById('nome-paciente').textContent;
+                
+                alert(`Consulta agendada com sucesso!\n\nPaciente: ${nomePaciente}\nData: ${dataFormatada}\nHorário: ${selectedTimeModal}`);
+                
+                // Aqui você implementaria a lógica para salvar no backend
+                // Por exemplo: salvarConsultaNoBanco(nomePaciente, selectedDateModal, selectedTimeModal);
+                
+                fecharModalAgendamento();
+            }
+        }
+    </script>
+</body>
+</html>
